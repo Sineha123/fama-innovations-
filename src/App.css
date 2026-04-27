@@ -1,0 +1,56 @@
+.page-shell {
+  position: relative;
+  z-index: 1;
+}
+
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  z-index: 100;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.scroll-progress__bar {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, rgba(79, 140, 255, 1), rgba(186, 209, 255, 1));
+  box-shadow: 0 0 20px rgba(79, 140, 255, 0.8), 0 0 40px rgba(186, 209, 255, 0.4);
+  transform-origin: left center;
+  will-change: transform;
+}
+
+main {
+  position: relative;
+  z-index: 1;
+}
+
+/* Global reveal animation classes */
+.reveal-up {
+  opacity: 0;
+  transform: translateY(40px);
+}
+
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-40px);
+}
+
+.reveal-right {
+  opacity: 0;
+  transform: translateX(40px);
+}
+
+.reveal-scale {
+  opacity: 0;
+  transform: scale(0.9);
+}
+
+.reveal-blur {
+  opacity: 0;
+  filter: blur(10px);
+}
+

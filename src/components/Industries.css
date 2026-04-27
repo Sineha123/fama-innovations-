@@ -1,0 +1,125 @@
+.industries__subtitle {
+  font-size: 16px;
+  color: var(--muted);
+  line-height: 1.7;
+  max-width: 800px;
+  margin: 0 auto 60px;
+  text-align: center;
+}
+
+.industries__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 28px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.industry-card {
+  padding: 36px;
+  border-radius: 20px;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.industry-card:hover {
+  transform: translateY(-8px);
+}
+
+/* Gradient card type */
+.industry-card--gradient {
+  background: linear-gradient(135deg, rgba(79, 140, 255, 0.1), rgba(10, 14, 26, 0.6));
+  border: 1px solid rgba(79, 140, 255, 0.2);
+  backdrop-filter: blur(12px);
+}
+
+.industry-card--gradient:hover {
+  border-color: rgba(79, 140, 255, 0.4);
+  box-shadow: 0 20px 50px rgba(79, 140, 255, 0.15);
+}
+
+/* Glass card type */
+.industry-card--glass {
+  background: rgba(10, 14, 26, 0.5);
+  backdrop-filter: blur(20px) saturate(1.4);
+  -webkit-backdrop-filter: blur(20px) saturate(1.4);
+  border: 1px solid rgba(186, 209, 255, 0.12);
+}
+
+.industry-card--glass:hover {
+  border-color: rgba(186, 209, 255, 0.25);
+  box-shadow: 0 16px 48px rgba(186, 209, 255, 0.1);
+}
+
+/* Glow card type */
+.industry-card--glow {
+  background: rgba(79, 140, 255, 0.05);
+  border: 1px solid rgba(79, 140, 255, 0.2);
+  box-shadow: 0 0 30px rgba(79, 140, 255, 0.08);
+}
+
+.industry-card--glow:hover {
+  background: rgba(79, 140, 255, 0.1);
+  border-color: rgba(79, 140, 255, 0.4);
+  box-shadow: 0 0 50px rgba(79, 140, 255, 0.2);
+}
+
+.industry-card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.industry-card__icon {
+  font-size: 32px;
+}
+
+.industry-card__number {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 12px;
+  color: var(--muted);
+  opacity: 0.5;
+}
+
+.industry-card__title {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.industry-card__description {
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--muted);
+}
+
+.industry-card__tags {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.industry-card__tags span {
+  display: inline-block;
+  padding: 6px 14px;
+  background: rgba(79, 140, 255, 0.1);
+  color: var(--blue);
+  border-radius: 8px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  border: 1px solid rgba(79, 140, 255, 0.15);
+}
+
+@media (max-width: 768px) {
+  .industries__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .industry-card {
+    padding: 28px 24px;
+  }
+}
+

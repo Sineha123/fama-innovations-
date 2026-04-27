@@ -1,0 +1,226 @@
+.process {
+  background: linear-gradient(180deg, rgba(79, 140, 255, 0.02), transparent);
+  padding-top: 80px;
+  padding-bottom: 80px;
+}
+
+.process__header {
+  text-align: center;
+  margin-bottom: 80px;
+  padding: 0 40px;
+}
+
+/* ===== Timeline Container ===== */
+.process__timeline {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 400px;
+}
+
+/* Central horizontal line */
+.process__line-bg {
+  position: absolute;
+  top: 50%;
+  left: 60px;
+  right: 60px;
+  height: 3px;
+  background: rgba(186, 209, 255, 0.1);
+  border-radius: 2px;
+  transform: translateY(-50%);
+  z-index: 1;
+}
+
+.process__line {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, var(--blue), var(--silver-soft), var(--blue));
+  background-size: 200% 100%;
+  border-radius: 2px;
+  box-shadow: 0 0 20px rgba(79, 140, 255, 0.5), 0 0 40px rgba(186, 209, 255, 0.2);
+  transform-origin: left center;
+}
+
+/* ===== Each Step ===== */
+.process-step {
+  position: relative;
+  z-index: 2;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 240px;
+}
+
+/* Top positioned: card above, node below */
+.process-step--top {
+  justify-content: flex-end;
+  padding-bottom: 24px;
+}
+
+.process-step--top .process-card {
+  order: 0;
+  margin-bottom: 32px;
+}
+
+.process-step--top .process-node {
+  order: 1;
+}
+
+.process-step--top .process-card__connector {
+  top: 100%;
+  height: 32px;
+}
+
+/* Bottom positioned: node above, card below */
+.process-step--bottom {
+  justify-content: flex-start;
+  padding-top: 24px;
+}
+
+.process-step--bottom .process-node {
+  order: 0;
+  margin-bottom: 32px;
+}
+
+.process-step--bottom .process-card {
+  order: 1;
+}
+
+.process-step--bottom .process-card__connector {
+  bottom: 100%;
+  height: 32px;
+  top: auto;
+}
+
+/* ===== Cards ===== */
+.process-card {
+  position: relative;
+  width: 100%;
+}
+
+.process-card__inner {
+  padding: 28px 24px;
+  border-radius: 16px;
+  text-align: center;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.process-card__inner:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(79, 140, 255, 0.1);
+}
+
+.process-card__inner h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 10px;
+}
+
+.process-card__inner p {
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--muted);
+  margin: 0;
+}
+
+/* Connector line from card to node */
+.process-card__connector {
+  position: absolute;
+  left: 50%;
+  width: 2px;
+  background: linear-gradient(180deg, var(--blue), rgba(79, 140, 255, 0.2));
+  transform: translateX(-50%);
+}
+
+/* ===== Nodes ===== */
+.process-node {
+  position: relative;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--blue), var(--royal));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 30px rgba(79, 140, 255, 0.4), 0 0 60px rgba(79, 140, 255, 0.15);
+  z-index: 3;
+}
+
+.process-node span {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 14px;
+  font-weight: 700;
+  color: white;
+}
+
+/* Pulse ring */
+.process-node__ring {
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  border: 2px solid var(--blue);
+  opacity: 0.6;
+  animation: node-pulse 2s ease-in-out infinite;
+}
+
+@keyframes node-pulse {
+  0%, 100% { transform: scale(1); opacity: 0.6; }
+  50% { transform: scale(1.15); opacity: 0.2; }
+}
+
+/* ===== Mobile ===== */
+@media (max-width: 768px) {
+  .process__timeline {
+    flex-direction: column;
+    min-height: auto;
+    gap: 48px;
+    padding: 0 20px;
+  }
+
+  .process__line-bg {
+    display: none;
+  }
+
+  .process-step {
+    max-width: 100%;
+    flex-direction: row;
+    gap: 24px;
+    align-items: flex-start;
+  }
+
+  .process-step--top,
+  .process-step--bottom {
+    padding: 0;
+    justify-content: flex-start;
+  }
+
+  .process-step--top .process-card,
+  .process-step--bottom .process-card {
+    order: 1;
+    margin: 0;
+    flex: 1;
+  }
+
+  .process-step--top .process-node,
+  .process-step--bottom .process-node {
+    order: 0;
+    margin: 0;
+    flex-shrink: 0;
+  }
+
+  .process-card__connector {
+    display: none;
+  }
+
+  .process__header {
+    margin-bottom: 48px;
+    padding: 0 20px;
+  }
+}
+

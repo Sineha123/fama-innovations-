@@ -1,0 +1,123 @@
+.contact {
+  background: linear-gradient(180deg, transparent, rgba(75, 159, 255, 0.03));
+}
+
+.contact__wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  max-width: 1200px;
+  margin: 0 auto;
+  align-items: start;
+}
+
+.contact__info {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+.contact__header {
+  max-width: 500px;
+}
+
+.contact__description {
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--muted);
+  margin-top: 24px;
+}
+
+.contact__details {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.contact-detail__label {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 11px;
+  color: var(--blue);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.contact-detail__value {
+  font-size: 16px;
+  color: var(--text);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.contact-detail__value:hover {
+  color: var(--blue);
+}
+
+/* Form - no container background or border, just inputs as glass */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 0;
+  background: none;
+  border: none;
+  border-radius: 0;
+}
+
+.form-group {
+  width: 100%;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+/* Glassmorphism inputs */
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 16px 20px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(186, 209, 255, 0.12);
+  border-radius: 12px;
+  color: var(--text);
+  font-size: 14px;
+  font-family: inherit;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+  color: var(--muted);
+  opacity: 0.5;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: none;
+  background: rgba(79, 140, 255, 0.06);
+  border-color: rgba(79, 140, 255, 0.4);
+  box-shadow: 0 0 20px rgba(79, 140, 255, 0.15), inset 0 0 20px rgba(79, 140, 255, 0.03);
+}
+
+.contact-form button {
+  align-self: flex-start;
+  margin-top: 8px;
+}
+
+@media (max-width: 768px) {
+  .contact__wrapper {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+}
+

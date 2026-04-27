@@ -1,0 +1,147 @@
+.footer {
+  background: linear-gradient(180deg, rgba(2, 6, 23, 0.9), #000000);
+  border-top: 1px solid rgba(186, 209, 255, 0.1);
+  margin-top: 80px;
+  padding: 60px 40px 40px;
+}
+
+.footer__content {
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer__main {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+  gap: 40px;
+}
+
+.footer__logo-img {
+  max-height: 32px;
+  max-width: 140px;
+  width: auto;
+  height: auto;
+  display: block;
+  margin-bottom: 16px;
+  filter: drop-shadow(0 0 8px rgba(79, 140, 255, 0.3));
+  object-fit: contain;
+}
+
+.footer__description {
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--muted);
+  margin-bottom: 24px;
+}
+
+.footer__column {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.footer__heading {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--blue);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.footer__links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.footer__links button {
+  background: none;
+  border: none;
+  color: var(--muted);
+  font-size: 14px;
+  cursor: pointer;
+  padding: 0;
+  text-align: left;
+  transition: color 0.3s ease;
+  font-family: inherit;
+}
+
+.footer__links a {
+  font-size: 14px;
+  color: var(--muted);
+  transition: color 0.3s ease;
+  text-decoration: none;
+}
+
+.footer__links button:hover,
+.footer__links a:hover {
+  color: var(--blue);
+}
+
+.footer__bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 40px;
+  border-top: 1px solid rgba(186, 209, 255, 0.08);
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.footer__copyright {
+  font-size: 12px;
+  color: var(--muted);
+  opacity: 0.7;
+  margin: 0;
+}
+
+.footer__legal {
+  display: flex;
+  gap: 32px;
+}
+
+.footer__legal a {
+  font-size: 12px;
+  color: var(--muted);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer__legal a:hover {
+  color: var(--blue);
+}
+
+@media (max-width: 1024px) {
+  .footer__main {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .footer {
+    padding: 40px 20px 30px;
+  }
+
+  .footer__main {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .footer__bottom {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .footer__legal {
+    width: 100%;
+    justify-content: space-between;
+  }
+}
+
