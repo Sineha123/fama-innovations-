@@ -1,5 +1,5 @@
 .contact {
-  background: linear-gradient(180deg, transparent, rgba(75, 159, 255, 0.03));
+  background: linear-gradient(180deg, transparent, rgba(41, 77, 236, 0.03));
 }
 
 .contact__wrapper {
@@ -80,8 +80,8 @@
 .contact-form textarea {
   width: 100%;
   padding: 16px 20px;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(186, 209, 255, 0.12);
+  background: rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(41, 77, 236, 0.12);
   border-radius: 12px;
   color: var(--text);
   font-size: 14px;
@@ -100,9 +100,9 @@
 .contact-form input:focus,
 .contact-form textarea:focus {
   outline: none;
-  background: rgba(79, 140, 255, 0.06);
-  border-color: rgba(79, 140, 255, 0.4);
-  box-shadow: 0 0 20px rgba(79, 140, 255, 0.15), inset 0 0 20px rgba(79, 140, 255, 0.03);
+  background: rgba(41, 77, 236, 0.05);
+  border-color: rgba(41, 77, 236, 0.35);
+  box-shadow: 0 0 20px rgba(41, 77, 236, 0.12), inset 0 0 20px rgba(41, 77, 236, 0.02);
 }
 
 .contact-form button {

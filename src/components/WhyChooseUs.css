@@ -1,5 +1,5 @@
 .why-choose {
-  background: linear-gradient(180deg, transparent, rgba(79, 140, 255, 0.02));
+  background: linear-gradient(180deg, transparent, rgba(41, 77, 236, 0.03));
 }
 
 .why-choose__content {
@@ -36,7 +36,7 @@
 
 .why-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 16px 48px rgba(79, 140, 255, 0.12);
+  box-shadow: 0 16px 48px rgba(41, 77, 236, 0.1);
 }
 
 .why-card__icon {
@@ -46,11 +46,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid rgba(79, 140, 255, 0.3);
+  border: 1px solid rgba(41, 77, 236, 0.25);
   border-radius: 14px;
   color: var(--blue);
-  background: rgba(79, 140, 255, 0.05);
-  text-shadow: 0 0 10px rgba(79, 140, 255, 0.4);
+  background: rgba(41, 77, 236, 0.05);
+  text-shadow: 0 0 10px rgba(41, 77, 236, 0.3);
 }
 
 .why-card__title {
@@ -84,20 +84,20 @@
 
 .testimonial-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 16px 40px rgba(79, 140, 255, 0.15);
+  box-shadow: 0 16px 40px rgba(41, 77, 236, 0.12);
 }
 
 .testimonial-card__stars {
   color: var(--blue);
   font-size: 16px;
   margin-bottom: 12px;
-  text-shadow: 0 0 10px rgba(79, 140, 255, 0.4);
+  text-shadow: 0 0 10px rgba(41, 77, 236, 0.3);
 }
 
 .testimonial-card__tag {
   display: inline-block;
   padding: 4px 12px;
-  background: rgba(79, 140, 255, 0.1);
+  background: rgba(41, 77, 236, 0.08);
   color: var(--blue);
   border-radius: 6px;
   font-size: 11px;

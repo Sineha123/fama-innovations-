@@ -33,7 +33,7 @@ export default function Hero() {
         vx: (Math.random() - 0.5) * 0.3,
         vy: (Math.random() - 0.5) * 0.3,
         radius: Math.random() * 2 + 1,
-        opacity: Math.random() * 0.5 + 0.2,
+        opacity: Math.random() * 0.6 + 0.3,
       })
     }
 
@@ -50,9 +50,9 @@ export default function Hero() {
         if (node.y > canvas.height) node.y = 0
 
         const gradient = ctx.createRadialGradient(node.x, node.y, 0, node.x, node.y, node.radius * 4)
-        gradient.addColorStop(0, `rgba(186, 209, 255, ${node.opacity})`)
-        gradient.addColorStop(0.5, `rgba(79, 140, 255, ${node.opacity * 0.5})`)
-        gradient.addColorStop(1, 'rgba(79, 140, 255, 0)')
+        gradient.addColorStop(0, `rgba(41, 77, 236, ${node.opacity * 0.4})`)
+        gradient.addColorStop(0.5, `rgba(59, 92, 246, ${node.opacity * 0.25})`)
+        gradient.addColorStop(1, 'rgba(41, 77, 236, 0)')
 
         ctx.beginPath()
         ctx.arc(node.x, node.y, node.radius * 4, 0, Math.PI * 2)
@@ -61,7 +61,7 @@ export default function Hero() {
 
         ctx.beginPath()
         ctx.arc(node.x, node.y, node.radius, 0, Math.PI * 2)
-        ctx.fillStyle = `rgba(255, 255, 255, ${node.opacity + 0.3})`
+        ctx.fillStyle = `rgba(41, 77, 236, ${node.opacity * 0.8})`
         ctx.fill()
       })
 
@@ -72,12 +72,12 @@ export default function Hero() {
           const dist = Math.sqrt(dx * dx + dy * dy)
 
           if (dist < CONNECTION_DISTANCE) {
-            const opacity = (1 - dist / CONNECTION_DISTANCE) * 0.25
+            const opacity = (1 - dist / CONNECTION_DISTANCE) * 0.35
             ctx.beginPath()
             ctx.moveTo(nodes[i].x, nodes[i].y)
             ctx.lineTo(nodes[j].x, nodes[j].y)
-            ctx.strokeStyle = `rgba(186, 209, 255, ${opacity})`
-            ctx.lineWidth = 0.8
+            ctx.strokeStyle = `rgba(41, 77, 236, ${opacity})`
+            ctx.lineWidth = 1
             ctx.stroke()
           }
         }
@@ -236,7 +236,7 @@ export default function Hero() {
       <div className="hero__content" ref={contentRef}>
         <div className="hero-pill">
           <span className="hero-pill__icon">⚡</span>
-          WHERE INNOVATION MEETS ENGINEERING
+          Engineering Tomorrow's Solutions Today
         </div>
 
         <div className="hero-panel" ref={panelRef}>
@@ -246,8 +246,8 @@ export default function Hero() {
           <div className="hero-panel__shine" />
           <div className="hero-panel__text-wrap">
             <h1 className="hero-title">
-              Driving Innovation Through{' '}
-              <span className="accent glow-text">Engineering Excellence</span>
+              Smart Engineering.{' '}
+              <span className="accent glow-text">Real Results.</span>
             </h1>
           </div>
           <div className="hero-panel__orb hero-panel__orb--one" />
@@ -255,22 +255,23 @@ export default function Hero() {
         </div>
 
         <div className="hero-microcopy">
-          <span>➡️ Where Innovation Meets Engineering</span>
-          <span>➡️ Turning Ideas into Intelligent Solutions</span>
+          <span>Product Design</span>
+          <span>Embedded Systems</span>
+          <span>Virtual Validation</span>
+          <span>Manufacturing</span>
         </div>
 
         <p className="hero-lede">
-          At FamaInnovations, we empower businesses with advanced engineering solutions that transform ideas into
-          high-performance products. From concept to execution, we combine innovation, precision, and technology to
-          deliver impactful results.
+          We help businesses build better products faster. From initial design to final production, 
+          our engineering team brings deep expertise in automotive, aerospace, and industrial sectors.
         </p>
 
         <div className="hero-actions">
           <button className="button button--primary" onClick={() => scrollToSection('services')}>
-            EXPLORE SERVICES
+            Our Services
           </button>
-          <button className="button button--ghost" onClick={() => scrollToSection('about')}>
-            ABOUT US
+          <button className="button button--ghost" onClick={() => scrollToSection('contact')}>
+            Get in Touch
           </button>
         </div>
 

@@ -30,40 +30,40 @@
 
 /* Gradient card type */
 .industry-card--gradient {
-  background: linear-gradient(135deg, rgba(79, 140, 255, 0.1), rgba(10, 14, 26, 0.6));
-  border: 1px solid rgba(79, 140, 255, 0.2);
+  background: linear-gradient(135deg, rgba(41, 77, 236, 0.08), rgba(255, 255, 255, 0.5));
+  border: 1px solid rgba(41, 77, 236, 0.18);
   backdrop-filter: blur(12px);
 }
 
 .industry-card--gradient:hover {
-  border-color: rgba(79, 140, 255, 0.4);
-  box-shadow: 0 20px 50px rgba(79, 140, 255, 0.15);
+  border-color: rgba(41, 77, 236, 0.35);
+  box-shadow: 0 20px 50px rgba(41, 77, 236, 0.12);
 }
 
 /* Glass card type */
 .industry-card--glass {
-  background: rgba(10, 14, 26, 0.5);
+  background: rgba(255, 255, 255, 0.5);
   backdrop-filter: blur(20px) saturate(1.4);
   -webkit-backdrop-filter: blur(20px) saturate(1.4);
-  border: 1px solid rgba(186, 209, 255, 0.12);
+  border: 1px solid rgba(41, 77, 236, 0.12);
 }
 
 .industry-card--glass:hover {
-  border-color: rgba(186, 209, 255, 0.25);
-  box-shadow: 0 16px 48px rgba(186, 209, 255, 0.1);
+  border-color: rgba(41, 77, 236, 0.25);
+  box-shadow: 0 16px 48px rgba(41, 77, 236, 0.1);
 }
 
 /* Glow card type */
 .industry-card--glow {
-  background: rgba(79, 140, 255, 0.05);
-  border: 1px solid rgba(79, 140, 255, 0.2);
-  box-shadow: 0 0 30px rgba(79, 140, 255, 0.08);
+  background: rgba(41, 77, 236, 0.04);
+  border: 1px solid rgba(41, 77, 236, 0.18);
+  box-shadow: 0 0 30px rgba(41, 77, 236, 0.06);
 }
 
 .industry-card--glow:hover {
-  background: rgba(79, 140, 255, 0.1);
-  border-color: rgba(79, 140, 255, 0.4);
-  box-shadow: 0 0 50px rgba(79, 140, 255, 0.2);
+  background: rgba(41, 77, 236, 0.08);
+  border-color: rgba(41, 77, 236, 0.35);
+  box-shadow: 0 0 50px rgba(41, 77, 236, 0.15);
 }
 
 .industry-card__header {

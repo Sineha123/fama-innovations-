@@ -16,16 +16,16 @@
 .stat {
   padding: 40px 24px;
   border-radius: 20px;
-  background: rgba(10, 14, 26, 0.4);
-  border: 1px solid rgba(186, 209, 255, 0.1);
+  background: rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(41, 77, 236, 0.1);
   backdrop-filter: blur(12px);
   transition: all 0.4s ease;
 }
 
 .stat:hover {
   transform: translateY(-6px);
-  border-color: rgba(79, 140, 255, 0.3);
-  box-shadow: 0 16px 48px rgba(79, 140, 255, 0.12);
+  border-color: rgba(41, 77, 236, 0.25);
+  box-shadow: 0 16px 48px rgba(41, 77, 236, 0.1);
 }
 
 .stat__number {
@@ -33,7 +33,7 @@
   font-weight: 700;
   color: var(--text);
   margin-bottom: 12px;
-  text-shadow: 0 0 30px rgba(79, 140, 255, 0.4), 0 0 60px rgba(186, 209, 255, 0.2);
+  text-shadow: 0 0 30px rgba(41, 77, 236, 0.3), 0 0 60px rgba(36, 190, 250, 0.15);
 }
 
 .stat__label {

@@ -1,40 +1,28 @@
-# FamaInnovations Animation & Content Update Plan
+# Light Theme Conversion - TODO
 
-## Critical Fixes
-- [x] Fix duplicate website (index.html has static HTML + React root)
+## Plan
+Convert dark-themed website to light theme using logo colors:
+- **Primary Blue**: `#294DEC` (rgb(41, 77, 236))
+- **Cyan Accent**: `#24BEFA` (rgb(36, 190, 250))
 
-## Global Updates
-- [ ] Update index.css with navy/black/silver color scheme, glow animations, glassmorphism utilities
-- [ ] Update App.css with scroll progress glow, global animation classes
-- [ ] Update App.jsx with ScrollTrigger setup
-- [ ] Expand useAnimations.js with more reusable hooks
+Preserve glassmorphism, glow effects, and animated borders.
 
-## Component Updates
-- [ ] Header.jsx - Small logo, enhanced glassmorphism nav
-- [ ] Header.css - Small logo styles, glass effects
-- [ ] Hero.jsx - Light web canvas animation, GSAP entrance timeline, updated content
-- [ ] Hero.css - Thick pure glassmorphism, white/silver glow, bloom effects
-- [ ] About.jsx - Updated content, scroll-triggered reveal animations
-- [ ] About.css - Glass cards, stagger animations
-- [ ] Services.jsx - 6 services with updated content, card animations
-- [ ] Services.css - Different card types with hover glow
-- [ ] Process.jsx - Updated content, animated timeline
-- [ ] Process.css - Timeline draw animation
-- [ ] Industries.jsx - Updated content, card reveals
-- [ ] Industries.css - Industry card styles
-- [ ] WhyChooseUs.jsx - 4 reasons + testimonials, updated content
-- [ ] WhyChooseUs.css - Feature cards with glassmorphism
-- [ ] Stats.jsx - Updated stats, count-up animation
-- [ ] Stats.css - Stats styling with glow
-- [ ] FAQ.jsx - Add FAQ content with animations
-- [ ] FAQ.css - FAQ accordion with glass effect
-- [ ] Contact.jsx - Updated content, form animations
-- [ ] Contact.css - Contact styling
-- [ ] Footer.jsx - Proper footer, small logo
-- [ ] Footer.css - Footer styling with glassmorphism
+## Steps
 
-## Final Checks
-- [ ] Test responsiveness
-- [ ] Verify all animations work
-- [ ] Check no duplicate content
+- [x] 1. Analyze logo colors and codebase
+- [x] 2. Create conversion plan
+- [ ] 3. Update `src/index.css` - Root variables, body background, glass utilities, animations
+- [ ] 4. Update `src/App.css` - Scroll progress bar
+- [ ] 5. Update `src/components/Header.css` - Header, nav, buttons
+- [ ] 6. Update `src/components/Hero.css` - Hero background, glass panel, beams, orbs
+- [ ] 7. Update `src/components/About.css` - Cards, stats, core values
+- [ ] 8. Update `src/components/Services.css` - Service cards (glass/glow/outline)
+- [ ] 9. Update `src/components/Process.css` - Timeline, nodes, cards
+- [ ] 10. Update `src/components/Industries.css` - Industry cards
+- [ ] 11. Update `src/components/WhyChooseUs.css` - Why cards, testimonials
+- [ ] 12. Update `src/components/Stats.css` - Stat cards
+- [ ] 13. Update `src/components/FAQ.css` - FAQ items
+- [ ] 14. Update `src/components/Contact.css` - Form inputs
+- [x] 15. Update `src/components/Footer.css` - Footer background, borders
+- [ ] 16. Test and verify
 

@@ -1,5 +1,5 @@
 .about {
-  background: linear-gradient(180deg, transparent, rgba(79, 140, 255, 0.02));
+  background: linear-gradient(180deg, transparent, rgba(41, 77, 236, 0.03));
 }
 
 .about__content {
@@ -37,7 +37,7 @@
 
 .mission-vision-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 12px 40px rgba(79, 140, 255, 0.15), 0 0 60px rgba(79, 140, 255, 0.1);
+  box-shadow: 0 12px 40px rgba(41, 77, 236, 0.12), 0 0 60px rgba(41, 77, 236, 0.08);
 }
 
 .mission-vision .label {
@@ -84,15 +84,15 @@
   font-size: 15px;
   color: var(--text);
   padding: 16px 20px;
-  background: rgba(79, 140, 255, 0.03);
-  border: 1px solid rgba(186, 209, 255, 0.08);
+  background: rgba(41, 77, 236, 0.04);
+  border: 1px solid rgba(41, 77, 236, 0.1);
   border-radius: 12px;
   transition: all 0.3s ease;
 }
 
 .core-values__list li:hover {
-  background: rgba(79, 140, 255, 0.06);
-  border-color: rgba(186, 209, 255, 0.15);
+  background: rgba(41, 77, 236, 0.08);
+  border-color: rgba(41, 77, 236, 0.18);
   transform: translateX(4px);
 }
 
@@ -101,7 +101,7 @@
   flex-shrink: 0;
   margin-top: 2px;
   font-size: 14px;
-  text-shadow: 0 0 8px rgba(79, 140, 255, 0.5);
+  text-shadow: 0 0 8px rgba(41, 77, 236, 0.4);
 }
 
 .core-values__list strong {
@@ -128,7 +128,7 @@
 
 .stat-card:hover {
   transform: translateY(-8px) scale(1.02);
-  box-shadow: 0 20px 50px rgba(79, 140, 255, 0.2), 0 0 80px rgba(79, 140, 255, 0.1);
+  box-shadow: 0 20px 50px rgba(41, 77, 236, 0.15), 0 0 80px rgba(41, 77, 236, 0.08);
 }
 
 .stat-number {
@@ -136,7 +136,7 @@
   font-weight: 700;
   color: var(--blue);
   margin-bottom: 10px;
-  text-shadow: 0 0 20px rgba(79, 140, 255, 0.4);
+  text-shadow: 0 0 20px rgba(41, 77, 236, 0.3);
   line-height: 1;
 }
 

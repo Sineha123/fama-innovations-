@@ -1,5 +1,5 @@
 .faq {
-  background: linear-gradient(180deg, rgba(79, 140, 255, 0.02), transparent);
+  background: linear-gradient(180deg, rgba(41, 77, 236, 0.03), transparent);
 }
 
 .faq__subtitle {
@@ -21,16 +21,16 @@
   margin-bottom: 12px;
   transition: all 0.3s ease;
   overflow: hidden;
-  border: 1px solid rgba(186, 209, 255, 0.08);
+  border: 1px solid rgba(41, 77, 236, 0.08);
 }
 
 .faq-item:hover {
-  border-color: rgba(79, 140, 255, 0.25);
+  border-color: rgba(41, 77, 236, 0.2);
 }
 
 .faq-item.is-open {
-  background: rgba(79, 140, 255, 0.06);
-  border-color: rgba(79, 140, 255, 0.3);
+  background: rgba(41, 77, 236, 0.05);
+  border-color: rgba(41, 77, 236, 0.25);
 }
 
 .faq-item__header {
@@ -69,7 +69,7 @@
   font-size: 24px;
   color: var(--blue);
   transition: transform 0.3s ease;
-  text-shadow: 0 0 8px rgba(79, 140, 255, 0.4);
+  text-shadow: 0 0 8px rgba(41, 77, 236, 0.3);
 }
 
 .faq-item.is-open .faq-item__toggle {
