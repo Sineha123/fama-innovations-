@@ -65,10 +65,8 @@ export default function FAQ() {
 
   return (
     <section className="section faq" id="faq" ref={sectionRef}>
-      <div className="section__ghost">08</div>
-
       <div className="section__header">
-        <p className="section-kicker">// 08 FAQ</p>
+        <p className="section-kicker">FAQ</p>
         <h2 className="section-title">
           Frequently Asked <span className="accent">Questions</span>
         </h2>

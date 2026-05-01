@@ -1,17 +1,14 @@
-import { useState, useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import gsap from 'gsap'
 import './Header.css'
 
-export default function Header({ scrollProgress }) {
+export default function Header({ currentRoute, navLinks, onNavigate }) {
   const [isScrolled, setIsScrolled] = useState(false)
-  const headerRef = useRef(null)
   const logoRef = useRef(null)
   const navRef = useRef(null)
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 60)
-    }
+    const handleScroll = () => setIsScrolled(window.scrollY > 60)
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
@@ -32,45 +29,34 @@ export default function Header({ scrollProgress }) {
       gsap.fromTo(
         buttons,
         { opacity: 0, y: -20 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.6,
-          stagger: 0.08,
-          ease: 'power2.out',
-          delay: 0.3,
-        }
+        { opacity: 1, y: 0, duration: 0.5, stagger: 0.05, ease: 'power2.out', delay: 0.3 }
       )
     }
   }, [])
 
-  const scrollToSection = (sectionId) => {
-    const element = document.getElementById(sectionId)
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' })
-    }
-  }
-
   return (
-    <header ref={headerRef} className={`site-header ${isScrolled ? 'is-scrolled' : ''}`}>
+    <header className={`site-header ${isScrolled ? 'is-scrolled' : ''}`}>
       <div className="site-header__inner container">
-        <a ref={logoRef} className="brand" href="#top" aria-label="Fama Innovations Home">
+        <button ref={logoRef} className="brand" onClick={() => onNavigate('/')}>
           <img src="/logo.png" alt="Fama Innovations" className="logo-img" />
-        </a>
+        </button>
 
         <nav ref={navRef} className="site-nav" aria-label="Primary">
-          <button onClick={() => scrollToSection('about')}>ABOUT</button>
-          <button onClick={() => scrollToSection('services')}>SERVICES</button>
-          <button onClick={() => scrollToSection('process')}>PROCESS</button>
-          <button onClick={() => scrollToSection('industries')}>INDUSTRIES</button>
-          <button onClick={() => scrollToSection('contact')}>CONTACT</button>
+          {navLinks.map((link) => (
+            <button
+              key={link.path}
+              className={currentRoute === link.path ? 'is-active' : ''}
+              onClick={() => onNavigate(link.path)}
+            >
+              {link.label}
+            </button>
+          ))}
         </nav>
 
-        <button className="button button--primary" onClick={() => scrollToSection('contact')}>
-          START A PROJECT
+        <button className="button button--primary site-header__cta" onClick={() => onNavigate('/contact')}>
+          Start a Project
         </button>
       </div>
     </header>
   )
 }
-

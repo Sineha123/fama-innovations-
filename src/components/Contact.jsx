@@ -11,7 +11,7 @@ export default function Contact() {
     email: '',
     company: '',
     subject: '',
-    message: ''
+    message: '',
   })
 
   const sectionRef = useRef(null)
@@ -37,17 +37,13 @@ export default function Contact() {
         }
       )
     })
-
-    return () => {
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill())
-    }
   }, [])
 
   const handleChange = (e) => {
     const { name, value } = e.target
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [name]: value
+      [name]: value,
     }))
   }
 
@@ -59,12 +55,10 @@ export default function Contact() {
 
   return (
     <section className="section contact" id="contact" ref={sectionRef}>
-      <div className="section__ghost">09</div>
-
       <div className="contact__wrapper">
         <div className="contact__info">
           <div className="contact__header">
-            <p className="section-kicker">// 09 CONTACT</p>
+            <p className="section-kicker">Contact</p>
             <h2 className="section-title">
               Let's Innovate <span className="accent">Together</span>
             </h2>
@@ -76,87 +70,51 @@ export default function Contact() {
 
           <div className="contact__details">
             <div className="contact-detail reveal-up">
-              <p className="contact-detail__label">EMAIL</p>
+              <p className="contact-detail__label">Email</p>
               <a href="mailto:info@famainnovations.com" className="contact-detail__value">
                 info@famainnovations.com
               </a>
             </div>
             <div className="contact-detail reveal-up">
-              <p className="contact-detail__label">PHONE</p>
+              <p className="contact-detail__label">Phone</p>
               <a href="tel:+1-555-000-0000" className="contact-detail__value">
                 +1 (555) 000-0000
               </a>
             </div>
             <div className="contact-detail reveal-up">
-              <p className="contact-detail__label">LOCATION</p>
-              <p className="contact-detail__value">
-                Global Engineering Partner
-              </p>
+              <p className="contact-detail__label">Location</p>
+              <p className="contact-detail__value">Global Engineering Partner</p>
             </div>
           </div>
         </div>
 
         <form className="contact-form reveal-up" onSubmit={handleSubmit}>
           <div className="form-group">
-            <input
-              type="text"
-              name="name"
-              placeholder="FULL NAME"
-              value={formData.name}
-              onChange={handleChange}
-              required
-            />
+            <input type="text" name="name" placeholder="FULL NAME" value={formData.name} onChange={handleChange} required />
           </div>
 
           <div className="form-row">
             <div className="form-group">
-              <input
-                type="email"
-                name="email"
-                placeholder="EMAIL ADDRESS"
-                value={formData.email}
-                onChange={handleChange}
-                required
-              />
+              <input type="email" name="email" placeholder="EMAIL ADDRESS" value={formData.email} onChange={handleChange} required />
             </div>
             <div className="form-group">
-              <input
-                type="text"
-                name="company"
-                placeholder="COMPANY / ORGANIZATION"
-                value={formData.company}
-                onChange={handleChange}
-              />
+              <input type="text" name="company" placeholder="COMPANY / ORGANIZATION" value={formData.company} onChange={handleChange} />
             </div>
           </div>
 
           <div className="form-group">
-            <input
-              type="text"
-              name="subject"
-              placeholder="SUBJECT"
-              value={formData.subject}
-              onChange={handleChange}
-            />
+            <input type="text" name="subject" placeholder="SUBJECT" value={formData.subject} onChange={handleChange} />
           </div>
 
           <div className="form-group">
-            <textarea
-              name="message"
-              placeholder="MESSAGE"
-              rows="6"
-              value={formData.message}
-              onChange={handleChange}
-              required
-            ></textarea>
+            <textarea name="message" placeholder="MESSAGE" rows="6" value={formData.message} onChange={handleChange} required />
           </div>
 
           <button type="submit" className="button button--primary">
-            SEND MESSAGE
+            Send Message
           </button>
         </form>
       </div>
     </section>
   )
 }
-

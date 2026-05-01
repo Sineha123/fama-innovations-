@@ -41,9 +41,8 @@ export default function Process() {
 
   return (
     <section className="section process" id="process" ref={sectionRef}>
-      <div className="section__ghost">03</div>
       <div className="process__header">
-        <p className="section-kicker">// 03 PROCESS</p>
+        <p className="section-kicker">Process</p>
         <h2 className="section-title">How We <span className="accent">Deliver</span></h2>
       </div>
 

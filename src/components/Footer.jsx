@@ -1,11 +1,11 @@
- import { useEffect, useRef } from 'react'
+import { useEffect, useRef } from 'react'
 import gsap from 'gsap'
 import ScrollTrigger from 'gsap/ScrollTrigger'
 import './Footer.css'
 
 gsap.registerPlugin(ScrollTrigger)
 
-export default function Footer() {
+export default function Footer({ navLinks, onNavigate }) {
   const footerRef = useRef(null)
 
   useEffect(() => {
@@ -29,81 +29,69 @@ export default function Footer() {
         }
       )
     })
-
-    return () => {
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill())
-    }
   }, [])
-
-  const scrollToSection = (sectionId) => {
-    const element = document.getElementById(sectionId)
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' })
-    }
-  }
 
   return (
     <footer className="footer" ref={footerRef}>
       <div className="footer__content container">
         <div className="footer__main">
           <div className="footer__column footer-reveal">
-          <img src="/logo.png" alt="Fama Innovations" className="footer__logo-img" />
+            <img src="/logo.png" alt="Fama Innovations" className="footer__logo-img" />
             <p className="footer__description">
-              Empowering businesses with high-quality engineering solutions that improve
-              performance, accelerate growth, and deliver long-term value through innovation and excellence.
+              High-quality digital experiences and engineering solutions built with innovation, precision, and long-term value in mind.
             </p>
-            <button className="button button--ghost" onClick={() => scrollToSection('contact')}>
-              Start a Project →
+            <button className="button button--ghost" onClick={() => onNavigate('/contact')}>
+              Start a Project
             </button>
           </div>
 
           <div className="footer__column footer-reveal">
-            <h4 className="footer__heading">COMPANY</h4>
+            <h4 className="footer__heading">Company</h4>
             <ul className="footer__links">
-              <li><button onClick={() => scrollToSection('about')}>About Us</button></li>
-              <li><button onClick={() => scrollToSection('process')}>Our Process</button></li>
-              <li><button onClick={() => scrollToSection('why-choose')}>Why Choose Us</button></li>
+              <li><button onClick={() => onNavigate('/about')}>About Us</button></li>
+              <li><button onClick={() => onNavigate('/portfolio')}>Portfolio</button></li>
+              <li><button onClick={() => onNavigate('/blog')}>Blogs</button></li>
             </ul>
           </div>
 
           <div className="footer__column footer-reveal">
-            <h4 className="footer__heading">SERVICES</h4>
+            <h4 className="footer__heading">Services</h4>
             <ul className="footer__links">
-              <li><button onClick={() => scrollToSection('services')}>Product Design</button></li>
-              <li><button onClick={() => scrollToSection('services')}>Embedded Engineering</button></li>
-              <li><button onClick={() => scrollToSection('services')}>Virtual Validation</button></li>
-              <li><button onClick={() => scrollToSection('services')}>Manufacturing</button></li>
+              <li><button onClick={() => onNavigate('/services')}>Product Design</button></li>
+              <li><button onClick={() => onNavigate('/services')}>Embedded Engineering</button></li>
+              <li><button onClick={() => onNavigate('/solutions')}>Solutions</button></li>
             </ul>
           </div>
 
           <div className="footer__column footer-reveal">
-            <h4 className="footer__heading">INDUSTRIES</h4>
+            <h4 className="footer__heading">Quick Links</h4>
             <ul className="footer__links">
-              <li><button onClick={() => scrollToSection('industries')}>Automotive</button></li>
-              <li><button onClick={() => scrollToSection('industries')}>Aerospace</button></li>
-              <li><button onClick={() => scrollToSection('industries')}>General Engineering</button></li>
+              {navLinks.map((link) => (
+                <li key={link.path}>
+                  <button onClick={() => onNavigate(link.path)}>{link.label}</button>
+                </li>
+              ))}
             </ul>
           </div>
 
           <div className="footer__column footer-reveal">
-            <h4 className="footer__heading">GET IN TOUCH</h4>
+            <h4 className="footer__heading">Get in Touch</h4>
             <ul className="footer__links">
-              <li><button onClick={() => scrollToSection('contact')}>Contact Us</button></li>
-              <li><button onClick={() => scrollToSection('faq')}>FAQ</button></li>
+              <li><button onClick={() => onNavigate('/contact')}>Contact Us</button></li>
               <li><a href="mailto:info@famainnovations.com">info@famainnovations.com</a></li>
+              <li><a href="tel:+15550000000">+1 (555) 000-0000</a></li>
             </ul>
           </div>
         </div>
 
         <div className="footer__bottom footer-reveal">
-          <p className="footer__copyright">© 2024 FAMA INNOVATIONS. ALL RIGHTS RESERVED.</p>
+          <p className="footer__copyright">© 2026 FAMA INNOVATIONS. ALL RIGHTS RESERVED.</p>
           <div className="footer__legal">
-            <a href="/">PRIVACY POLICY</a>
-            <a href="/">TERMS OF SERVICE</a>
+            <a href="#/">Privacy Policy</a>
+            <a href="#/">Terms of Service</a>
           </div>
         </div>
       </div>
     </footer>
   )
 }
-

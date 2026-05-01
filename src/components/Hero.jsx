@@ -2,13 +2,12 @@ import { useEffect, useRef } from 'react'
 import gsap from 'gsap'
 import './Hero.css'
 
-export default function Hero() {
+export default function Hero({ onNavigate }) {
   const canvasRef = useRef(null)
   const heroRef = useRef(null)
   const contentRef = useRef(null)
   const panelRef = useRef(null)
 
-  // Light Web Canvas Animation
   useEffect(() => {
     const canvas = canvasRef.current
     if (!canvas) return
@@ -23,6 +22,7 @@ export default function Hero() {
       canvas.width = window.innerWidth
       canvas.height = window.innerHeight
     }
+
     resize()
     window.addEventListener('resize', resize)
 
@@ -94,7 +94,6 @@ export default function Hero() {
     }
   }, [])
 
-  // Mouse-follow effect: panel MOVES toward cursor + tilts
   useEffect(() => {
     const panel = panelRef.current
     const hero = heroRef.current
@@ -106,14 +105,10 @@ export default function Hero() {
       const centerY = rect.top + rect.height / 2
       const mouseX = e.clientX - centerX
       const mouseY = e.clientY - centerY
-
-      // Movement: panel shifts TOWARD cursor (follow the mouse)
       const moveX = mouseX * 0.12
       const moveY = mouseY * 0.12
-
-      // Tilt: rotates based on cursor position
-      const rotateY = (mouseX / (rect.width / 2)) * 12
-      const rotateX = -(mouseY / (rect.height / 2)) * 12
+      const rotationY = (mouseX / (rect.width / 2)) * 12
+      const rotationX = -(mouseY / (rect.height / 2)) * 12
 
       gsap.to(panel, {
         x: moveX,
@@ -125,7 +120,6 @@ export default function Hero() {
         transformPerspective: 1200,
       })
 
-      // Inner content moves opposite for depth parallax
       const textWrap = panel.querySelector('.hero-panel__text-wrap')
       if (textWrap) {
         gsap.to(textWrap, {
@@ -146,6 +140,7 @@ export default function Hero() {
         duration: 0.9,
         ease: 'elastic.out(1, 0.4)',
       })
+
       const textWrap = panel.querySelector('.hero-panel__text-wrap')
       if (textWrap) {
         gsap.to(textWrap, {
@@ -166,64 +161,30 @@ export default function Hero() {
     }
   }, [])
 
-  // GSAP Entrance Animation
   useEffect(() => {
     if (!contentRef.current) return
 
     const tl = gsap.timeline({ defaults: { ease: 'power3.out' } })
 
-    tl.fromTo(
-      '.hero-pill',
-      { opacity: 0, y: 30, scale: 0.9 },
-      { opacity: 1, y: 0, scale: 1, duration: 0.8 }
-    )
+    tl.fromTo('.hero-pill', { opacity: 0, y: 30, scale: 0.9 }, { opacity: 1, y: 0, scale: 1, duration: 0.8 })
       .fromTo(
         '.hero-panel',
         { opacity: 0, y: 50, scale: 0.9, rotationX: 15 },
         { opacity: 1, y: 0, scale: 1, rotationX: 0, duration: 1.1, transformPerspective: 1200 },
         '-=0.4'
       )
-      .fromTo(
-        '.hero-microcopy',
-        { opacity: 0, y: 20 },
-        { opacity: 1, y: 0, duration: 0.7 },
-        '-=0.5'
-      )
-      .fromTo(
-        '.hero-lede',
-        { opacity: 0, y: 20 },
-        { opacity: 1, y: 0, duration: 0.7 },
-        '-=0.4'
-      )
-      .fromTo(
-        '.hero-actions',
-        { opacity: 0, y: 20 },
-        { opacity: 1, y: 0, duration: 0.7 },
-        '-=0.4'
-      )
-      .fromTo(
-        '.hero-signals',
-        { opacity: 0, y: 20 },
-        { opacity: 1, y: 0, duration: 0.7 },
-        '-=0.4'
-      )
-      .fromTo(
-        '.hero-scroll',
-        { opacity: 0 },
-        { opacity: 1, duration: 0.6 },
-        '-=0.2'
-      )
+      .fromTo('.hero-microcopy', { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.7 }, '-=0.5')
+      .fromTo('.hero-lede', { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.7 }, '-=0.4')
+      .fromTo('.hero-actions', { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.7 }, '-=0.4')
+      .fromTo('.hero-signals', { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.7 }, '-=0.4')
+      .fromTo('.hero-scroll', { opacity: 0 }, { opacity: 1, duration: 0.6 }, '-=0.2')
 
-    return () => {
-      tl.kill()
-    }
+    return () => tl.kill()
   }, [])
 
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId)
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' })
-    }
+    if (element) element.scrollIntoView({ behavior: 'smooth' })
   }
 
   return (
@@ -235,7 +196,7 @@ export default function Hero() {
 
       <div className="hero__content" ref={contentRef}>
         <div className="hero-pill">
-          <span className="hero-pill__icon">⚡</span>
+          <span className="hero-pill__icon">+</span>
           Engineering Tomorrow's Solutions Today
         </div>
 
@@ -246,8 +207,7 @@ export default function Hero() {
           <div className="hero-panel__shine" />
           <div className="hero-panel__text-wrap">
             <h1 className="hero-title">
-              Smart Engineering.{' '}
-              <span className="accent glow-text">Real Results.</span>
+              Smart Engineering. <span className="accent glow-text">Real Results.</span>
             </h1>
           </div>
           <div className="hero-panel__orb hero-panel__orb--one" />
@@ -262,15 +222,15 @@ export default function Hero() {
         </div>
 
         <p className="hero-lede">
-          We help businesses build better products faster. From initial design to final production, 
-          our engineering team brings deep expertise in automotive, aerospace, and industrial sectors.
+          We help businesses build better products faster. From initial design to final production, our engineering
+          team brings deep expertise in automotive, aerospace, and industrial sectors.
         </p>
 
         <div className="hero-actions">
-          <button className="button button--primary" onClick={() => scrollToSection('services')}>
+          <button className="button button--primary" onClick={() => onNavigate('/services')}>
             Our Services
           </button>
-          <button className="button button--ghost" onClick={() => scrollToSection('contact')}>
+          <button className="button button--ghost" onClick={() => onNavigate('/contact')}>
             Get in Touch
           </button>
         </div>
@@ -290,4 +250,3 @@ export default function Hero() {
     </section>
   )
 }
-
