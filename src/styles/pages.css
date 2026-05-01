@@ -527,23 +527,203 @@
   width: fit-content;
 }
 
-/* Contact Hero - Standard (unchanged) */
+/* Contact Hero - Redesigned */
 .contact-hero {
-  padding: 132px 0 28px;
-}
-
-.contact-hero__media {
   position: relative;
-  min-height: 470px;
-  border-radius: 28px;
   overflow: hidden;
+  padding: 132px 0 28px;
+  min-height: 85vh;
+  display: flex;
+  align-items: center;
 }
 
-.contact-hero__media img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transform: scale(1.02);
+.contact-hero__bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.contact-hero__orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+}
+
+.contact-hero__orb--one {
+  width: 400px;
+  height: 400px;
+  top: -120px;
+  right: -80px;
+  background: radial-gradient(circle, rgba(62, 178, 253, 0.2), transparent 70%);
+  animation: orb-drift-1 8s ease-in-out infinite;
+}
+
+.contact-hero__orb--two {
+  width: 350px;
+  height: 350px;
+  bottom: -100px;
+  left: -60px;
+  background: radial-gradient(circle, rgba(82, 113, 255, 0.2), transparent 70%);
+  animation: orb-drift-2 10s ease-in-out infinite;
+}
+
+.contact-hero__orb--three {
+  width: 200px;
+  height: 200px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, rgba(36, 190, 250, 0.12), transparent 70%);
+  animation: orb-drift-3 12s ease-in-out infinite;
+}
+
+@keyframes orb-drift-1 {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(-30px, 20px); }
+}
+
+@keyframes orb-drift-2 {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(20px, -20px); }
+}
+
+@keyframes orb-drift-3 {
+  0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.6; }
+  50% { transform: translate(-50%, -50%) scale(1.2); opacity: 0.8; }
+}
+
+.contact-hero__wrapper {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.contact-hero__content {
+  padding: 20px 0;
+}
+
+.contact-hero__title {
+  font-size: clamp(2.4rem, 5vw, 4rem);
+  line-height: 1.1;
+  color: var(--text);
+  letter-spacing: -0.04em;
+  margin: 18px 0;
+}
+
+.contact-hero__title .accent {
+  color: var(--blue-dark);
+}
+
+.contact-hero__text {
+  font-size: 1.1rem;
+  color: var(--muted);
+  line-height: 1.8;
+  max-width: 480px;
+}
+
+.contact-hero__actions {
+  display: flex;
+  gap: 16px;
+  margin-top: 32px;
+}
+
+.contact-hero__visual {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.contact-hero__card {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 24px;
+  border-radius: 20px;
+  transition: all 0.3s ease;
+}
+
+.contact-hero__card:hover {
+  transform: translateX(8px);
+}
+
+.contact-hero__card-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(135deg, rgba(62, 178, 253, 0.15), rgba(82, 113, 255, 0.15));
+  color: var(--blue-dark);
+  flex-shrink: 0;
+}
+
+.contact-hero__card-icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+.contact-hero__card-content {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.contact-hero__card-content span {
+  font-size: 13px;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.contact-hero__card-content strong {
+  font-size: 1.1rem;
+  color: var(--text);
+}
+
+@media (max-width: 1024px) {
+  .contact-hero__wrapper {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .contact-hero {
+    min-height: auto;
+    padding: 120px 0 40px;
+  }
+
+  .contact-hero__visual {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .contact-hero__card {
+    flex: 1;
+    min-width: 200px;
+  }
+}
+
+@media (max-width: 768px) {
+  .contact-hero {
+    padding: 100px 0 30px;
+  }
+
+  .contact-hero__title {
+    font-size: 2rem;
+  }
+
+  .contact-hero__actions {
+    flex-direction: column;
+  }
+
+  .contact-hero__visual {
+    flex-direction: column;
+  }
+
+  .contact-hero__card {
+    min-width: auto;
+  }
 }
 
 /* Responsive Adjustments */
