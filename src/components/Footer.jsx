@@ -85,7 +85,7 @@ export default function Footer({ navLinks, onNavigate }) {
         </div>
 
         <div className="footer__bottom footer-reveal">
-          <p className="footer__copyright">© 2026 FAMA INNOVATIONS. ALL RIGHTS RESERVED.</p>
+          <p className="footer__copyright">Copyright 2026 FAMA INNOVATIONS. All rights reserved.</p>
           <div className="footer__legal">
             <a href="#/">Privacy Policy</a>
             <a href="#/">Terms of Service</a>
