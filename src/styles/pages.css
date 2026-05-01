@@ -1,42 +1,99 @@
 /* Page Hero Variants */
 
-/* About Hero - Centered with Glassmorphism */
+/* About Hero - Editorial Layered Layout */
 .about-hero {
+  position: relative;
+  overflow: hidden;
   padding: 132px 0 28px;
-  background: linear-gradient(135deg, rgba(62, 178, 253, 0.08), rgba(82, 113, 255, 0.06));
+  background:
+    radial-gradient(circle at 14% 18%, rgba(62, 178, 253, 0.18), transparent 24%),
+    radial-gradient(circle at 84% 78%, rgba(82, 113, 255, 0.16), transparent 26%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.82), rgba(226, 232, 240, 0.62));
+}
+
+.about-hero__orb {
+  position: absolute;
+  width: 360px;
+  height: 360px;
+  border-radius: 50%;
+  filter: blur(12px);
+  pointer-events: none;
+}
+
+.about-hero__orb--one {
+  top: -120px;
+  right: -60px;
+  background: radial-gradient(circle, rgba(62, 178, 253, 0.16), transparent 68%);
+}
+
+.about-hero__orb--two {
+  left: -120px;
+  bottom: -140px;
+  background: radial-gradient(circle, rgba(82, 113, 255, 0.16), transparent 68%);
 }
 
 .about-hero__wrapper {
+  position: relative;
   display: grid;
-  grid-template-columns: 1.2fr 0.8fr;
-  gap: 48px;
+  grid-template-columns: 0.95fr 1.05fr;
+  gap: 52px;
   align-items: center;
 }
 
 .about-hero__content {
-  padding: 20px;
+  position: relative;
+  z-index: 2;
+  padding: 20px 8px 20px 0;
 }
 
 .about-hero__title {
-  font-size: clamp(2.2rem, 4vw, 3.8rem);
-  line-height: 1.1;
+  font-size: clamp(2.4rem, 4.4vw, 4.2rem);
+  line-height: 1.05;
   color: var(--text);
-  letter-spacing: -0.03em;
-  margin: 20px 0;
+  letter-spacing: -0.04em;
+  margin: 18px 0;
+}
+
+.about-hero__title .accent {
+  color: var(--blue-dark);
 }
 
 .about-hero__text {
-  font-size: 1.05rem;
+  max-width: 560px;
+  font-size: 1rem;
   color: var(--muted);
   line-height: 1.8;
-  margin-top: 16px;
+}
+
+.about-hero__pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 28px;
+}
+
+.about-hero__pills span {
+  padding: 10px 16px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.about-hero__visual {
+  position: relative;
+  min-height: 500px;
+  display: grid;
+  place-items: center;
 }
 
 .about-hero__image {
   position: relative;
-  border-radius: 20px;
+  z-index: 2;
+  width: min(100%, 390px);
+  height: 460px;
   overflow: hidden;
-  height: 420px;
+  border-radius: 32px;
 }
 
 .about-hero__image img {
@@ -48,74 +105,129 @@
 .about-hero__overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), transparent 50%);
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.3), transparent 45%),
+    linear-gradient(180deg, transparent, rgba(82, 113, 255, 0.16));
   backdrop-filter: blur(1px);
 }
 
-.about-hero__bg-accent {
+.about-hero__note {
   position: absolute;
-  top: -100px;
-  right: -100px;
-  width: 400px;
-  height: 400px;
-  background: radial-gradient(circle, rgba(62, 178, 253, 0.12), transparent 70%);
-  border-radius: 50%;
-  pointer-events: none;
+  z-index: 3;
+  max-width: 230px;
+  padding: 20px;
+  border-radius: 24px;
 }
 
-/* Services Hero - Gradient with Side Image */
+.about-hero__note strong,
+.about-hero__note span {
+  display: block;
+  color: var(--text);
+}
+
+.about-hero__note strong {
+  font-size: 1rem;
+  margin-bottom: 8px;
+}
+
+.about-hero__note span,
+.about-hero__note p {
+  color: var(--muted);
+  line-height: 1.7;
+  font-size: 0.94rem;
+}
+
+.about-hero__note--top {
+  top: 18px;
+  right: 12px;
+}
+
+.about-hero__note--bottom {
+  bottom: 28px;
+  left: 0;
+}
+
+/* Services Hero - Glass Panel with Offset Image */
 .services-hero {
-  padding: 132px 0 28px;
   position: relative;
   overflow: hidden;
+  padding: 132px 0 28px;
 }
 
-.services-hero__bg-gradient {
+.services-hero__backdrop {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to right, rgba(62, 178, 253, 0.12), rgba(82, 113, 255, 0.08), transparent);
+  background:
+    linear-gradient(90deg, rgba(62, 178, 253, 0.14), transparent 52%),
+    radial-gradient(circle at 88% 26%, rgba(82, 113, 255, 0.16), transparent 25%);
   pointer-events: none;
 }
 
 .services-hero__wrapper {
-  display: grid;
-  grid-template-columns: 1fr 1.1fr;
-  gap: 52px;
-  align-items: center;
   position: relative;
   z-index: 1;
+  display: grid;
+  grid-template-columns: 0.92fr 1.08fr;
+  gap: 36px;
+  align-items: center;
 }
 
 .services-hero__content {
-  padding: 20px;
+  padding: 34px;
+  border-radius: 30px;
 }
 
 .services-hero__title {
-  font-size: clamp(2.4rem, 4.5vw, 4rem);
-  line-height: 1.08;
+  font-size: clamp(2.4rem, 4.4vw, 4rem);
+  line-height: 1.06;
   color: var(--text);
   letter-spacing: -0.04em;
-  margin: 20px 0;
+  margin: 18px 0;
+}
+
+.services-hero__title .accent {
+  color: var(--blue-dark);
 }
 
 .services-hero__text {
+  max-width: 520px;
   font-size: 1rem;
   color: var(--muted);
   line-height: 1.8;
-  margin-top: 16px;
-  max-width: 520px;
+}
+
+.services-hero__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.services-hero__chips span {
+  padding: 10px 14px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(41, 77, 236, 0.1);
+  color: var(--text);
+  font-size: 12px;
+  font-weight: 700;
 }
 
 .services-hero__actions {
   margin-top: 28px;
 }
 
+.services-hero__visual {
+  position: relative;
+  padding: 14px 0 44px 42px;
+}
+
 .services-hero__image {
   position: relative;
-  border-radius: 24px;
+  border-radius: 30px;
   overflow: hidden;
-  height: 480px;
-  box-shadow: 0 20px 60px rgba(62, 178, 253, 0.2);
+  height: 500px;
+  box-shadow: 0 24px 60px rgba(82, 113, 255, 0.16);
 }
 
 .services-hero__image img {
@@ -127,53 +239,79 @@
 .services-hero__shine {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to bottom right, rgba(255, 255, 255, 0.25), transparent 60%);
-  backdrop-filter: blur(0.5px);
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.34), transparent 42%),
+    linear-gradient(180deg, transparent, rgba(82, 113, 255, 0.12));
 }
 
-/* Solutions Hero - Split Design */
+.services-hero__floating-card {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  z-index: 2;
+  max-width: 260px;
+  padding: 22px;
+  border-radius: 22px;
+}
+
+.services-hero__floating-card strong {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--text);
+}
+
+.services-hero__floating-card p {
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+/* Solutions Hero - Strategy Dashboard */
 .solutions-hero {
-  padding: 132px 0 28px;
   position: relative;
   overflow: hidden;
+  padding: 132px 0 28px;
 }
 
 .solutions-hero__bg-pattern {
   position: absolute;
   inset: 0;
-  background: 
-    radial-gradient(circle at 20% 50%, rgba(62, 178, 253, 0.1), transparent 50%),
-    radial-gradient(circle at 80% 80%, rgba(82, 113, 255, 0.1), transparent 50%);
+  background:
+    radial-gradient(circle at 20% 50%, rgba(62, 178, 253, 0.1), transparent 44%),
+    radial-gradient(circle at 82% 18%, rgba(82, 113, 255, 0.12), transparent 28%),
+    linear-gradient(180deg, rgba(82, 113, 255, 0.04), transparent 42%);
   pointer-events: none;
 }
 
 .solutions-hero__wrapper {
-  display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
-  gap: 48px;
-  align-items: center;
   position: relative;
   z-index: 1;
+  display: grid;
+  grid-template-columns: 0.98fr 1.02fr;
+  gap: 34px;
+  align-items: center;
 }
 
 .solutions-hero__content {
-  padding: 20px;
+  padding: 20px 6px 20px 0;
 }
 
 .solutions-hero__title {
-  font-size: clamp(2.3rem, 4.2vw, 3.9rem);
-  line-height: 1.1;
+  font-size: clamp(2.4rem, 4.3vw, 4rem);
+  line-height: 1.06;
   color: var(--text);
-  letter-spacing: -0.03em;
-  margin: 20px 0;
+  letter-spacing: -0.04em;
+  margin: 18px 0;
+}
+
+.solutions-hero__title .accent {
+  color: var(--blue-dark);
 }
 
 .solutions-hero__text {
+  max-width: 540px;
   font-size: 1rem;
   color: var(--muted);
   line-height: 1.8;
-  margin-top: 16px;
-  max-width: 540px;
 }
 
 .solutions-hero__actions {
@@ -181,24 +319,57 @@
 }
 
 .solutions-hero__visual {
-  position: relative;
-  border-radius: 18px;
-  overflow: hidden;
-  height: 440px;
+  padding: 24px;
+  border-radius: 30px;
 }
 
-.solutions-hero__visual img {
+.solutions-hero__metrics {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  margin-bottom: 16px;
+}
+
+.solutions-hero__metric {
+  padding: 18px 16px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(41, 77, 236, 0.1);
+}
+
+.solutions-hero__metric strong {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--blue-dark);
+  font-size: 1.25rem;
+}
+
+.solutions-hero__metric span {
+  color: var(--muted);
+  font-size: 0.92rem;
+  line-height: 1.55;
+}
+
+.solutions-hero__preview {
+  position: relative;
+  height: 330px;
+  overflow: hidden;
+  border-radius: 22px;
+}
+
+.solutions-hero__preview img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: brightness(1.05);
+  filter: brightness(1.02);
 }
 
 .solutions-hero__glow {
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, rgba(62, 178, 253, 0.15), transparent 50%);
-  backdrop-filter: blur(1.5px);
+  background:
+    linear-gradient(135deg, rgba(62, 178, 253, 0.16), transparent 48%),
+    linear-gradient(180deg, transparent, rgba(82, 113, 255, 0.14));
 }
 
 /* Portfolio Hero - Large Featured Image */
@@ -253,7 +424,7 @@
 }
 
 .portfolio-hero__title .accent {
-  color: #3EB2FD;
+  color: #3eb2fd;
   text-shadow: 0 0 20px rgba(62, 178, 253, 0.4);
 }
 
@@ -384,10 +555,33 @@
     gap: 32px;
   }
 
+  .about-hero__visual {
+    min-height: auto;
+    gap: 18px;
+  }
+
+  .about-hero__note {
+    position: static;
+    max-width: none;
+  }
+
   .about-hero__image,
-  .services-hero__image,
-  .solutions-hero__visual {
+  .services-hero__image {
     min-height: 360px;
+  }
+
+  .services-hero__visual {
+    padding-left: 0;
+  }
+
+  .services-hero__floating-card {
+    position: static;
+    max-width: none;
+    margin-top: 16px;
+  }
+
+  .solutions-hero__metrics {
+    grid-template-columns: 1fr;
   }
 
   .portfolio-hero {
@@ -421,11 +615,24 @@
   .about-hero__title,
   .services-hero__title,
   .solutions-hero__title {
-    font-size: 1.8rem;
+    font-size: 1.9rem;
+  }
+
+  .about-hero__image {
+    width: 100%;
+    height: 360px;
+  }
+
+  .services-hero__content {
+    padding: 24px;
   }
 
   .services-hero__image {
     height: 380px;
+  }
+
+  .services-hero__visual {
+    padding: 0;
   }
 
   .portfolio-hero {
@@ -454,5 +661,13 @@
 
   .solutions-hero__bg-pattern {
     opacity: 0.5;
+  }
+
+  .solutions-hero__visual {
+    padding: 18px;
+  }
+
+  .solutions-hero__preview {
+    height: 280px;
   }
 }

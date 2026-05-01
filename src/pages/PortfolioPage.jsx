@@ -1,22 +1,10 @@
 import { useState, useMemo, useEffect, useRef } from 'react'
 import gsap from 'gsap'
 import ScrollTrigger from 'gsap/ScrollTrigger'
-import Footer from '../components/Footer'
-import FAQ from '../components/FAQ'
 import PageCta from '../components/PageCta'
 import '../styles/pages.css'
 
 gsap.registerPlugin(ScrollTrigger)
-
-const NAV_LINKS = [
-  { label: 'Home', path: '/' },
-  { label: 'About', path: '/about' },
-  { label: 'Services', path: '/services' },
-  { label: 'Solutions', path: '/solutions' },
-  { label: 'Portfolio', path: '/portfolio' },
-  { label: 'Blogs', path: '/blog' },
-  { label: 'Contact', path: '/contact' },
-]
 
 const PORTFOLIO_FAQS = [
   {
@@ -89,7 +77,7 @@ function PageFaqSection({ title, items }) {
             >
               <div className="page-faq__head">
                 <span>{item.question}</span>
-                <strong>{openIndex === index ? '−' : '+'}</strong>
+                <strong>{openIndex === index ? '-' : '+'}</strong>
               </div>
               {openIndex === index ? <p>{item.answer}</p> : null}
             </article>
@@ -136,7 +124,6 @@ export default function PortfolioPage({ onNavigate }) {
 
   return (
     <>
-      {/* Portfolio Hero - Large Featured Image */}
       <section className="portfolio-hero page-hero-variant">
         <div className="portfolio-hero__bg-image">
           <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1200&q=80" alt="Portfolio" />
@@ -190,7 +177,6 @@ export default function PortfolioPage({ onNavigate }) {
 
       <PageFaqSection title="Portfolio FAQ" items={PORTFOLIO_FAQS} />
       <PageCta text="Let's build something amazing together." onNavigate={onNavigate} />
-      <Footer navLinks={NAV_LINKS} onNavigate={onNavigate} />
     </>
   )
 }

@@ -1,18 +1,6 @@
 import { useState } from 'react'
-import Footer from '../components/Footer'
 import PageCta from '../components/PageCta'
-import PageIcon from '../components/PageIcon'
 import '../styles/pages.css'
-
-const NAV_LINKS = [
-  { label: 'Home', path: '/' },
-  { label: 'About', path: '/about' },
-  { label: 'Services', path: '/services' },
-  { label: 'Solutions', path: '/solutions' },
-  { label: 'Portfolio', path: '/portfolio' },
-  { label: 'Blogs', path: '/blog' },
-  { label: 'Contact', path: '/contact' },
-]
 
 const SOLUTIONS_FAQS = [
   {
@@ -73,7 +61,7 @@ function PageFaqSection({ title, items }) {
             >
               <div className="page-faq__head">
                 <span>{item.question}</span>
-                <strong>{openIndex === index ? '−' : '+'}</strong>
+                <strong>{openIndex === index ? '-' : '+'}</strong>
               </div>
               {openIndex === index ? <p>{item.answer}</p> : null}
             </article>
@@ -87,26 +75,44 @@ function PageFaqSection({ title, items }) {
 export default function SolutionsPage({ onNavigate }) {
   return (
     <>
-      {/* Solutions Hero - Split Design with Accent */}
-      <section className="solutions-hero page-hero-variant">
-        <div className="solutions-hero__bg-pattern"></div>
+      <section className="solutions-hero">
+        <div className="solutions-hero__bg-pattern" />
         <div className="container page-reveal">
           <div className="solutions-hero__wrapper">
             <div className="solutions-hero__content">
               <p className="section-kicker">Solutions</p>
               <h1 className="solutions-hero__title">
-                Problem-first solutions for <span className="accent">modern businesses</span>
+                Strategy-led systems for <span className="accent">complex business problems</span>
               </h1>
-              <p className="solutions-hero__text">Strategic approaches tailored to address your specific challenges with proven methodologies and innovative thinking.</p>
+              <p className="solutions-hero__text">
+                We audit the workflow, identify the friction, and shape the right mix of software, automation, and architecture around the actual bottleneck.
+              </p>
               <div className="solutions-hero__actions">
                 <button className="button button--primary" onClick={() => onNavigate('/portfolio')}>
                   View Portfolio
                 </button>
               </div>
             </div>
-            <div className="solutions-hero__visual">
-              <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1200&q=80" alt="Solutions" />
-              <div className="solutions-hero__glow"></div>
+
+            <div className="solutions-hero__visual glass-glow">
+              <div className="solutions-hero__metrics">
+                <article className="solutions-hero__metric">
+                  <strong>01</strong>
+                  <span>Audit the current flow</span>
+                </article>
+                <article className="solutions-hero__metric">
+                  <strong>02</strong>
+                  <span>Design the right intervention</span>
+                </article>
+                <article className="solutions-hero__metric">
+                  <strong>03</strong>
+                  <span>Scale the outcome cleanly</span>
+                </article>
+              </div>
+              <div className="solutions-hero__preview">
+                <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1200&q=80" alt="Solutions" />
+                <div className="solutions-hero__glow" />
+              </div>
             </div>
           </div>
         </div>
@@ -137,7 +143,6 @@ export default function SolutionsPage({ onNavigate }) {
 
       <PageFaqSection title="Solutions FAQ" items={SOLUTIONS_FAQS} />
       <PageCta text="Let's build something amazing together." onNavigate={onNavigate} />
-      <Footer navLinks={NAV_LINKS} onNavigate={onNavigate} />
     </>
   )
 }

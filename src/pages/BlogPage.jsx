@@ -1,17 +1,6 @@
 import { useState } from 'react'
-import Footer from '../components/Footer'
 import PageCta from '../components/PageCta'
 import '../styles/pages.css'
-
-const NAV_LINKS = [
-  { label: 'Home', path: '/' },
-  { label: 'About', path: '/about' },
-  { label: 'Services', path: '/services' },
-  { label: 'Solutions', path: '/solutions' },
-  { label: 'Portfolio', path: '/portfolio' },
-  { label: 'Blogs', path: '/blog' },
-  { label: 'Contact', path: '/contact' },
-]
 
 const BLOG_FAQS = [
   {
@@ -78,7 +67,7 @@ function PageFaqSection({ title, items }) {
             >
               <div className="page-faq__head">
                 <span>{item.question}</span>
-                <strong>{openIndex === index ? '−' : '+'}</strong>
+                <strong>{openIndex === index ? '-' : '+'}</strong>
               </div>
               {openIndex === index ? <p>{item.answer}</p> : null}
             </article>
@@ -92,7 +81,6 @@ function PageFaqSection({ title, items }) {
 export default function BlogPage({ onNavigate }) {
   return (
     <>
-      {/* Blog Hero - Magazine Style */}
       <section className="blog-hero page-hero-variant">
         <div className="blog-hero__bg-accent"></div>
         <div className="container page-reveal">
@@ -138,7 +126,6 @@ export default function BlogPage({ onNavigate }) {
 
       <PageFaqSection title="Blog FAQ" items={BLOG_FAQS} />
       <PageCta text="Let's build something amazing together." onNavigate={onNavigate} />
-      <Footer navLinks={NAV_LINKS} onNavigate={onNavigate} />
     </>
   )
 }

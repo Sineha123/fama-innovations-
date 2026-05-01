@@ -1,20 +1,8 @@
-import { useState, useEffect } from 'react'
-import Footer from '../components/Footer'
-import FAQ from '../components/FAQ'
+import { useState } from 'react'
 import PageCta from '../components/PageCta'
 import PageIcon from '../components/PageIcon'
 import CounterCard from '../components/CounterCard'
 import '../styles/pages.css'
-
-const NAV_LINKS = [
-  { label: 'Home', path: '/' },
-  { label: 'About', path: '/about' },
-  { label: 'Services', path: '/services' },
-  { label: 'Solutions', path: '/solutions' },
-  { label: 'Portfolio', path: '/portfolio' },
-  { label: 'Blogs', path: '/blog' },
-  { label: 'Contact', path: '/contact' },
-]
 
 const ABOUT_FAQS = [
   {
@@ -76,7 +64,7 @@ function PageFaqSection({ title, items }) {
             >
               <div className="page-faq__head">
                 <span>{item.question}</span>
-                <strong>{openIndex === index ? '−' : '+'}</strong>
+                <strong>{openIndex === index ? '-' : '+'}</strong>
               </div>
               {openIndex === index ? <p>{item.answer}</p> : null}
             </article>
@@ -90,21 +78,41 @@ function PageFaqSection({ title, items }) {
 export default function AboutPage({ onNavigate }) {
   return (
     <>
-      {/* About Hero - Centered Content with Glassmorphism */}
-      <section className="about-hero page-hero-variant">
-        <div className="about-hero__bg-accent"></div>
+      <section className="about-hero">
+        <div className="about-hero__orb about-hero__orb--one" />
+        <div className="about-hero__orb about-hero__orb--two" />
         <div className="container page-reveal">
           <div className="about-hero__wrapper">
             <div className="about-hero__content">
               <p className="section-kicker">About Fama Innovations</p>
               <h1 className="about-hero__title">
-                Innovating the Future with <span className="accent">Smart Technology Solutions</span>
+                A multidisciplinary team built for <span className="accent">smart execution</span>
               </h1>
-              <p className="about-hero__text">We transform ideas into powerful digital and engineering solutions.</p>
+              <p className="about-hero__text">
+                We bring together product thinking, engineering discipline, and a premium design mindset to turn ambitious ideas into real systems.
+              </p>
+              <div className="about-hero__pills">
+                <span className="glass">Strategy</span>
+                <span className="glass">Engineering</span>
+                <span className="glass">Design</span>
+              </div>
             </div>
-            <div className="about-hero__image">
-              <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1200&q=80" alt="Fama Innovations Team" />
-              <div className="about-hero__overlay"></div>
+
+            <div className="about-hero__visual">
+              <article className="about-hero__note about-hero__note--top glass">
+                <strong>Cross-functional delivery</strong>
+                <p>One team shaping research, build quality, and long-term business value.</p>
+              </article>
+
+              <div className="about-hero__image glass-glow">
+                <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1200&q=80" alt="Fama Innovations Team" />
+                <div className="about-hero__overlay" />
+              </div>
+
+              <article className="about-hero__note about-hero__note--bottom glass">
+                <span>Modern teams need more than execution.</span>
+                <strong>They need clarity.</strong>
+              </article>
             </div>
           </div>
         </div>
@@ -194,7 +202,6 @@ export default function AboutPage({ onNavigate }) {
 
       <PageFaqSection title="About FAQ" items={ABOUT_FAQS} />
       <PageCta text="Let's build something amazing together." onNavigate={onNavigate} />
-      <Footer navLinks={NAV_LINKS} onNavigate={onNavigate} />
     </>
   )
 }

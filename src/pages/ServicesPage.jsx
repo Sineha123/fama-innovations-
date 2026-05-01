@@ -1,19 +1,7 @@
-import { useState, useEffect } from 'react'
-import Footer from '../components/Footer'
-import FAQ from '../components/FAQ'
+import { useState } from 'react'
 import PageCta from '../components/PageCta'
 import PageIcon from '../components/PageIcon'
 import '../styles/pages.css'
-
-const NAV_LINKS = [
-  { label: 'Home', path: '/' },
-  { label: 'About', path: '/about' },
-  { label: 'Services', path: '/services' },
-  { label: 'Solutions', path: '/solutions' },
-  { label: 'Portfolio', path: '/portfolio' },
-  { label: 'Blogs', path: '/blog' },
-  { label: 'Contact', path: '/contact' },
-]
 
 const SERVICES_FAQS = [
   {
@@ -99,7 +87,7 @@ function PageFaqSection({ title, items }) {
             >
               <div className="page-faq__head">
                 <span>{item.question}</span>
-                <strong>{openIndex === index ? '−' : '+'}</strong>
+                <strong>{openIndex === index ? '-' : '+'}</strong>
               </div>
               {openIndex === index ? <p>{item.answer}</p> : null}
             </article>
@@ -113,26 +101,39 @@ function PageFaqSection({ title, items }) {
 export default function ServicesPage({ onNavigate }) {
   return (
     <>
-      {/* Services Hero - Gradient Background with Side Image */}
-      <section className="services-hero page-hero-variant">
-        <div className="services-hero__bg-gradient"></div>
+      <section className="services-hero">
+        <div className="services-hero__backdrop" />
         <div className="container page-reveal">
           <div className="services-hero__wrapper">
-            <div className="services-hero__content">
+            <div className="services-hero__content glass-glow">
               <p className="section-kicker">Our Services</p>
               <h1 className="services-hero__title">
-                Premium services built to support <span className="accent">smart growth</span>
+                Premium capabilities shaped for <span className="accent">delivery that feels intentional</span>
               </h1>
-              <p className="services-hero__text">Specialized capabilities tailored to your business needs with cutting-edge technology and proven expertise.</p>
+              <p className="services-hero__text">
+                From design and software to embedded systems and AI, our services are structured to support growth without losing clarity.
+              </p>
+              <div className="services-hero__chips">
+                <span>Digital Products</span>
+                <span>Embedded Engineering</span>
+                <span>Cloud and AI</span>
+              </div>
               <div className="services-hero__actions">
                 <button className="button button--primary" onClick={() => onNavigate('/contact')}>
                   Discuss a Project
                 </button>
               </div>
             </div>
-            <div className="services-hero__image">
-              <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1200&q=80" alt="Services" />
-              <div className="services-hero__shine"></div>
+
+            <div className="services-hero__visual">
+              <div className="services-hero__image">
+                <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1200&q=80" alt="Services" />
+                <div className="services-hero__shine" />
+              </div>
+              <article className="services-hero__floating-card glass">
+                <strong>End-to-end support</strong>
+                <p>Planning, build, validation, and optimization across every engagement.</p>
+              </article>
             </div>
           </div>
         </div>
@@ -191,7 +192,6 @@ export default function ServicesPage({ onNavigate }) {
 
       <PageFaqSection title="Services FAQ" items={SERVICES_FAQS} />
       <PageCta text="Let's build something amazing together." onNavigate={onNavigate} />
-      <Footer navLinks={NAV_LINKS} onNavigate={onNavigate} />
     </>
   )
 }
