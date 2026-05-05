@@ -96,6 +96,14 @@ export default function AboutPage({ onNavigate }) {
                 <span className="glass">Engineering</span>
                 <span className="glass">Design</span>
               </div>
+              <div className="about-hero__actions">
+                <button className="button button--primary" onClick={() => onNavigate('/privacy-policy')}>
+                  Privacy Policy
+                </button>
+                <button className="button button--ghost legal-button" onClick={() => onNavigate('/terms-of-service')}>
+                  Terms of Service
+                </button>
+              </div>
             </div>
 
             <div className="about-hero__visual">

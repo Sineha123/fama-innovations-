@@ -106,13 +106,18 @@
   gap: 28px;
 }
 
+.footer__legal button,
 .footer__legal a {
+  padding: 0;
+  border: 0;
+  background: none;
   font-size: 12px;
   color: var(--muted);
   text-decoration: none;
   transition: color 0.3s ease;
 }
 
+.footer__legal button:hover,
 .footer__legal a:hover {
   color: var(--blue);
 }

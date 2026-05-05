@@ -8,6 +8,10 @@ import SolutionsPage from './pages/SolutionsPage'
 import PortfolioPage from './pages/PortfolioPage'
 import BlogPage from './pages/BlogPage'
 import ContactPage from './pages/ContactPage'
+import PrivacyPolicyPage from './pages/PrivacyPolicyPage'
+import TermsOfServicePage from './pages/TermsOfServicePage'
+import LoginPage from './pages/LoginPage'
+import SignupPage from './pages/SignupPage'
 import { NAV_LINKS } from './data/site'
 import './App.css'
 
@@ -31,6 +35,14 @@ function PageRouter({ route, onNavigate }) {
       return <BlogPage onNavigate={onNavigate} />
     case '/contact':
       return <ContactPage onNavigate={onNavigate} />
+    case '/privacy-policy':
+      return <PrivacyPolicyPage onNavigate={onNavigate} />
+    case '/terms-of-service':
+      return <TermsOfServicePage onNavigate={onNavigate} />
+    case '/login':
+      return <LoginPage onNavigate={onNavigate} />
+    case '/signup':
+      return <SignupPage onNavigate={onNavigate} />
     default:
       return <HomePage onNavigate={onNavigate} />
   }

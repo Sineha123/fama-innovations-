@@ -87,8 +87,8 @@ export default function Footer({ navLinks, onNavigate }) {
         <div className="footer__bottom footer-reveal">
           <p className="footer__copyright">Copyright 2026 FAMA INNOVATIONS. All rights reserved.</p>
           <div className="footer__legal">
-            <a href="#/">Privacy Policy</a>
-            <a href="#/">Terms of Service</a>
+            <button onClick={() => onNavigate('/privacy-policy')}>Privacy Policy</button>
+            <button onClick={() => onNavigate('/terms-of-service')}>Terms of Service</button>
           </div>
         </div>
       </div>
