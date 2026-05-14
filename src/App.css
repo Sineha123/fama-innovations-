@@ -348,6 +348,17 @@
   padding: 24px;
 }
 
+.service-showcase__list {
+  margin: 16px 0 0;
+  padding-left: 18px;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.service-showcase__list li + li {
+  margin-top: 6px;
+}
+
 .solutions-stack {
   display: grid;
   gap: 28px;

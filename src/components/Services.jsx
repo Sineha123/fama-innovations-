@@ -8,57 +8,75 @@ gsap.registerPlugin(ScrollTrigger)
 const services = [
   {
     id: 1,
-    icon: 'cube',
-    title: 'Product Design & Development',
+    icon: 'code',
+    title: 'Development Services',
     description:
-      'We transform concepts into practical, user-focused designs using advanced tools and engineering methodologies. From initial idea to final production, we ensure innovation and efficiency.',
-    tags: ['Concept to Production', 'CAD', 'Engineering Design'],
+      'Web, mobile, desktop, SaaS, custom software, POS systems, and API development tailored to your business goals.',
+    tags: ['Web & Mobile', 'SaaS', 'Custom Software'],
     cardType: 'glass',
   },
   {
     id: 2,
-    icon: 'layers',
-    title: 'Platform & System Engineering',
+    icon: 'eye',
+    title: 'Design Services',
     description:
-      'We develop scalable platforms and system-level architectures tailored to industry-specific requirements, ensuring performance, flexibility, and reliability.',
-    tags: ['Scalable Architecture', 'System Design', 'Flexibility'],
+      'UI/UX, branding, social media creatives, motion graphics, video editing, and 3D design for a stronger visual presence.',
+    tags: ['UI/UX', 'Brand Identity', 'Motion & 3D'],
     cardType: 'glow',
   },
   {
     id: 3,
-    icon: 'chip',
-    title: 'Embedded Engineering Solutions',
+    icon: 'target',
+    title: 'Marketing Services',
     description:
-      'We provide complete hardware-software integration, embedded systems development, and IoT-based solutions for modern engineering needs.',
-    tags: ['Embedded Systems', 'IoT', 'HW/SW Integration'],
+      'Digital marketing, SEO, ads, email campaigns, influencer outreach, and content strategy to help you reach the right audience.',
+    tags: ['SEO', 'Paid Ads', 'Content Marketing'],
     cardType: 'glass',
   },
   {
     id: 4,
-    icon: 'shield',
-    title: 'Virtual Validation & Testing',
+    icon: 'store',
+    title: 'Business & E-commerce',
     description:
-      'Through simulation and digital validation, we reduce development time, minimize costs, and eliminate the need for excessive physical testing.',
-    tags: ['Simulation', 'Digital Twin', 'Cost Reduction'],
+      'Shopify, WooCommerce, Amazon, eBay, dropshipping, listings, and payment integrations for commerce-ready operations.',
+    tags: ['Shopify', 'WooCommerce', 'Marketplace Ops'],
     cardType: 'outline',
   },
   {
     id: 5,
-    icon: 'factory',
-    title: 'Manufacturing Engineering',
+    icon: 'spark',
+    title: 'AI & Modern Tech',
     description:
-      'We support process planning, tooling design, production optimization, and quality control to ensure efficient and scalable manufacturing.',
-    tags: ['Process Planning', 'Tooling', 'Quality Control'],
+      'AI chatbots, automation systems, AI content tools, and data visualization services that improve speed and decision-making.',
+    tags: ['AI Chatbots', 'Automation', 'Data Insights'],
     cardType: 'glow',
   },
   {
     id: 6,
-    icon: 'file',
-    title: 'Prototyping & Technical Documentation',
+    icon: 'shield',
+    title: 'Cybersecurity & Support',
     description:
-      'We offer rapid prototyping and detailed documentation to ensure smooth implementation and efficient product development cycles.',
-    tags: ['Prototyping', 'Documentation', 'Implementation'],
+      'Cybersecurity, servers, networks, databases, maintenance, backup, recovery, testing, and technical support services.',
+    tags: ['Security', 'Infrastructure', 'QA & Support'],
     cardType: 'outline',
+  },
+  {
+    id: 7,
+    icon: 'chip',
+    title: 'Blockchain Services',
+    description:
+      'Blockchain products, smart contracts, NFT marketplaces, and crypto wallet development for modern digital ecosystems.',
+    tags: ['Smart Contracts', 'NFT Platforms', 'Wallets'],
+    cardType: 'glass',
+  },
+  {
+    id: 8,
+    icon: 'users',
+    title: 'Consulting & Support',
+    description:
+      'IT consultancy, business automation guidance, project oversight, product management, and long-term technical support.',
+    tags: ['IT Consulting', 'Automation', 'Project Support'],
+    cardType: 'glow',
   },
 ]
 
@@ -94,13 +112,12 @@ export default function Services() {
       <div className="section__header">
         <p className="section-kicker">Services</p>
         <h2 className="section-title">
-          End-to-End <span className="accent">Engineering Solutions</span>
+          Complete <span className="accent">Digital Service Portfolio</span>
         </h2>
       </div>
 
       <p className="services__subtitle">
-        FamaInnovations provides a comprehensive range of engineering services designed to support complete product
-        lifecycle development from idea to implementation.
+        Fama Innovations provides development, design, marketing, commerce, AI, and IT services that help businesses build, grow, and operate more effectively.
       </p>
 
       <div className="services__grid">
@@ -127,12 +144,13 @@ export default function Services() {
 
 function ServiceIcon({ name }) {
   const icons = {
-    cube: <path d="M12 2.5 4.5 6.5v11L12 21.5l7.5-4v-11L12 2.5Zm0 2.3 5.2 2.8L12 10.4 6.8 7.6 12 4.8Zm-6 4.7 5 2.7v6.2l-5-2.6V9.5Zm13 0v6.1l-5 2.6v-6.2l5-2.5Z" />,
-    layers: <path d="m12 3 9 4.6-9 4.7-9-4.7L12 3Zm-6.9 8.2L12 14.8l6.9-3.6L21 13.6l-9 4.7-9-4.7 2.1-2.4Zm0 5.2L12 20l6.9-3.6L21 18.8l-9 4.7-9-4.7 2.1-2.4Z" />,
+    code: <path d="M8.5 7 4 12l4.5 5 1.5-1.3L6.6 12 10 8.3 8.5 7Zm7 0L14 8.3l3.4 3.7-3.4 3.7 1.5 1.3L20 12l-4.5-5ZM13 5l-4 14h2l4-14h-2Z" />,
+    eye: <path d="M12 4.5C7 4.5 2.7 7.6 1 12c1.7 4.4 6 7.5 11 7.5s9.3-3.1 11-7.5c-1.7-4.4-6-7.5-11-7.5Zm0 2c3.3 0 6.3 2.2 7.5 5.5-1.2 3.3-4.2 5.5-7.5 5.5-3.3 0-6.3-2.2-7.5-5.5 1.2-3.3 4.2-5.5 7.5-5.5Zm0 2a3.5 3.5 0 1 1 0 7 3.5 3.5 0 0 1 0-7Zm0 2a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3Z" />,
+    target: <path d="M12 2.5a9.5 9.5 0 1 0 0 19 9.5 9.5 0 0 0 0-19Zm0 2a7.5 7.5 0 1 1 0 15 7.5 7.5 0 0 1 0-15Zm0 3a4.5 4.5 0 1 0 0 9 4.5 4.5 0 0 0 0-9Zm0 2a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5Z" />,
+    store: <path d="M4 6.5 5.2 3h13.6L20 6.5V9a2.5 2.5 0 0 1-1.5 2.3V20a1 1 0 0 1-1 1H6.5a1 1 0 0 1-1-1v-8.7A2.5 2.5 0 0 1 4 9V6.5Zm2.6-1.5-.5 1.5h11.8l-.5-1.5H6.6ZM8 11.5V19h3v-5h2v5h3v-7.5a4 4 0 0 1-2 .5 3.8 3.8 0 0 1-3-1.3A3.8 3.8 0 0 1 8 12a4 4 0 0 1-2-.5Z" />,
     chip: <path d="M9 3h6v2h2.5A2.5 2.5 0 0 1 20 7.5V10h2v4h-2v2.5A2.5 2.5 0 0 1 17.5 19H15v2H9v-2H6.5A2.5 2.5 0 0 1 4 16.5V14H2v-4h2V7.5A2.5 2.5 0 0 1 6.5 5H9V3Zm-2.5 5v8h11V8h-11Zm2.5 2h6v4H9v-4Z" />,
     shield: <path d="M12 2.5 4.5 5.3v5.5c0 4.5 2.8 8.6 7.5 10.7 4.7-2.1 7.5-6.2 7.5-10.7V5.3L12 2.5Zm-1 12.3-3-3 1.4-1.4 1.6 1.6 3.6-3.6 1.4 1.4-5 5Z" />,
-    factory: <path d="M3 21V9.5l5 3V9.5l5 3V5l8 4.5V21H3Zm2-2h2v-5H5v5Zm4 0h2v-5H9v5Zm4 0h2v-5h-2v5Zm4 0h2v-5h-2v5Z" />,
-    file: <path d="M7 3h7l5 5v13H7V3Zm7 1.5V9h4.5L14 4.5ZM9 12h8v2H9v-2Zm0 4h8v2H9v-2Z" />,
+    users: <path d="M16 11a3.5 3.5 0 1 0-3.5-3.5A3.5 3.5 0 0 0 16 11Zm-8 0A3 3 0 1 0 5 8a3 3 0 0 0 3 3Zm8 2c-2.3 0-7 1.2-7 3.5V19h14v-2.5C23 14.2 18.3 13 16 13Zm-8 1c-1.8 0-5 .9-5 2.8V19h5v-2.5a4.8 4.8 0 0 1 2.1-3.9A7.8 7.8 0 0 0 8 14Z" />,
   }
 
   return (
