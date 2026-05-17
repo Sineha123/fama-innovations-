@@ -1,5 +1,6 @@
-import { useState } from 'react'
+import { useMemo, useState, useEffect } from 'react'
 import PageCta from '../components/PageCta'
+import { BLOG_CATEGORIES, BLOG_POSTS, BLOG_TAGS } from '../data/site'
 import '../styles/pages.css'
 
 const BLOG_FAQS = [
@@ -12,39 +13,6 @@ const BLOG_FAQS = [
     question: 'Can the blog support SEO-focused content?',
     answer:
       'Yes. This layout is well-suited for publishing informative articles that build authority and support discoverability.',
-  },
-]
-
-const blogPosts = [
-  {
-    title: 'Designing Better Engineering Experiences',
-    excerpt: 'How thoughtful interface systems help technical businesses present more clarity and trust.',
-    image: 'https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&w=1200&q=80',
-  },
-  {
-    title: 'Why Validation Should Start Earlier',
-    excerpt: 'Front-loading testing and technical review creates faster, smoother, and more confident delivery cycles.',
-    image: 'https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=1200&q=80',
-  },
-  {
-    title: 'What Makes a Portfolio Feel Credible',
-    excerpt: 'Better storytelling, stronger visuals, and clear project framing can change how capability is perceived.',
-    image: 'https://images.unsplash.com/photo-1497366412874-3415097a27e7?auto=format&fit=crop&w=1200&q=80',
-  },
-  {
-    title: 'Building Scalable Digital Foundations',
-    excerpt: 'Scalability is not only about infrastructure, it is also about structure, clarity, and future-proof choices.',
-    image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1200&q=80',
-  },
-  {
-    title: 'Where Smart Systems Meet User Experience',
-    excerpt: 'Technical sophistication becomes more valuable when the final interaction feels intuitive and premium.',
-    image: 'https://images.unsplash.com/photo-1516321497487-e288fb19713f?auto=format&fit=crop&w=1200&q=80',
-  },
-  {
-    title: 'How Clear Design Supports Business Growth',
-    excerpt: 'Premium design is not decoration, it is a strategic tool for clarity, trust, and conversion.',
-    image: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1200&q=80',
   },
 ]
 
@@ -78,26 +46,108 @@ function PageFaqSection({ title, items }) {
   )
 }
 
+function BlogModal({ post, onClose, onNavigate }) {
+  useEffect(() => {
+    if (!post) return
+
+    const onKeyDown = (event) => {
+      if (event.key === 'Escape') onClose()
+    }
+
+    document.addEventListener('keydown', onKeyDown)
+    return () => document.removeEventListener('keydown', onKeyDown)
+  }, [post, onClose])
+
+  if (!post) return null
+
+  return (
+    <div
+      className="blog-modal__backdrop"
+      role="presentation"
+      onMouseDown={(event) => {
+        if (event.target === event.currentTarget) onClose()
+      }}
+    >
+      <div className="blog-modal" role="dialog" aria-modal="true" aria-label={post.title}>
+        <div className="blog-modal__media">
+          <img src={post.image} alt={post.title} />
+          <div className="blog-modal__media-overlay" />
+          <button className="blog-modal__close" onClick={onClose} aria-label="Close article">
+            <span />
+            <span />
+          </button>
+        </div>
+
+        <div className="blog-modal__body">
+          <div className="blog-modal__meta">
+            <span>{post.date}</span>
+            <strong>{post.categoryLabel}</strong>
+          </div>
+          <h2 className="blog-modal__title">{post.title}</h2>
+          <div className="blog-modal__content">
+            {post.content.map((paragraph) => (
+              <p key={paragraph}>{paragraph}</p>
+            ))}
+          </div>
+          <div className="blog-modal__cta">
+            <h3>Interested in this technology?</h3>
+            <button className="button button--primary" onClick={() => onNavigate('/contact')}>
+              Talk to Us
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
 export default function BlogPage({ onNavigate }) {
+  const [searchTerm, setSearchTerm] = useState('')
+  const [activeCategory, setActiveCategory] = useState('all')
+  const [activePost, setActivePost] = useState(null)
+
+  const featuredPost = BLOG_POSTS[0]
+
+  const filteredPosts = useMemo(() => {
+    return BLOG_POSTS.slice(1).filter((post) => {
+      const matchesSearch =
+        searchTerm.trim() === '' ||
+        `${post.title} ${post.excerpt} ${post.categoryLabel}`.toLowerCase().includes(searchTerm.toLowerCase())
+
+      const matchesCategory = activeCategory === 'all' || post.category === activeCategory
+
+      return matchesSearch && matchesCategory
+    })
+  }, [activeCategory, searchTerm])
+
   return (
     <>
+      <BlogModal post={activePost} onClose={() => setActivePost(null)} onNavigate={onNavigate} />
+
       <section className="blog-hero page-hero-variant">
-        <div className="blog-hero__bg-accent"></div>
+        <div className="blog-hero__bg-accent" />
         <div className="container page-reveal">
           <div className="blog-hero__wrapper">
             <div className="blog-hero__header">
-              <p className="section-kicker">Insights & Stories</p>
-              <h1 className="blog-hero__title">
-                Editorial content with a <span className="accent">clean premium rhythm</span>
-              </h1>
-              <p className="blog-hero__text">Explore thought leadership, engineering insights, and design perspectives from our team.</p>
+              <p className="section-kicker">Latest Insights</p>
+              <h1 className="blog-hero__title">Latest Insights</h1>
+              <p className="blog-hero__text">Trends, tutorials, and thought leadership from our engineers.</p>
             </div>
-            <div className="blog-hero__featured">
-              <img src={blogPosts[0].image} alt={blogPosts[0].title} />
+
+            <div className="blog-hero__featured glass" onClick={() => setActivePost(featuredPost)} role="button" tabIndex={0}
+              onKeyDown={(event) => {
+                if (event.key === 'Enter' || event.key === ' ') setActivePost(featuredPost)
+              }}
+            >
+              <img src={featuredPost.image} alt={featuredPost.title} />
               <div className="blog-hero__featured-content">
-                <h3>{blogPosts[0].title}</h3>
-                <p>{blogPosts[0].excerpt}</p>
-                <button className="button button--secondary">Read Article</button>
+                <div className="blog-featured__meta">
+                  <span className="blog-featured__badge">Featured</span>
+                  <span>{featuredPost.date}</span>
+                </div>
+                <h3>{featuredPost.title}</h3>
+                <p>{featuredPost.excerpt}</p>
+                <button className="blog-card__link">Read Full Story</button>
               </div>
             </div>
           </div>
@@ -106,20 +156,99 @@ export default function BlogPage({ onNavigate }) {
 
       <section className="section page-section">
         <div className="container page-reveal">
-          <div className="blog-grid">
-            {blogPosts.slice(1).map((post) => (
-              <article className="blog-card glass" key={post.title}>
-                <div className="blog-card__image">
-                  <img src={post.image} alt={post.title} />
+          <div className="blog-layout">
+            <div className="blog-layout__main">
+              <div className="blog-grid">
+                {filteredPosts.map((post) => (
+                  <article
+                    className="blog-card glass"
+                    key={post.title}
+                    onClick={() => setActivePost(post)}
+                    role="button"
+                    tabIndex={0}
+                    onKeyDown={(event) => {
+                      if (event.key === 'Enter' || event.key === ' ') setActivePost(post)
+                    }}
+                  >
+                    <div className="blog-card__image">
+                      <img src={post.image} alt={post.title} />
+                    </div>
+                    <div className="blog-card__body">
+                      <div className="blog-card__meta">
+                        <span>{post.date}</span>
+                        <strong>{post.categoryLabel}</strong>
+                      </div>
+                      <h3>{post.title}</h3>
+                      <p>{post.excerpt}</p>
+                      <button className="blog-card__link">Read More</button>
+                    </div>
+                  </article>
+                ))}
+              </div>
+
+              {filteredPosts.length === 0 ? (
+                <div className="blog-empty glass">
+                  <h3>No articles found</h3>
+                  <p>Try a different search term or switch back to another category.</p>
                 </div>
-                <div className="blog-card__body">
-                  <span className="page-card__label">Article</span>
-                  <h3>{post.title}</h3>
-                  <p>{post.excerpt}</p>
-                  <button className="blog-card__link">Read More</button>
+              ) : null}
+            </div>
+
+            <aside className="blog-sidebar">
+              <div className="blog-sidebar__card glass">
+                <div className="blog-search">
+                  <input
+                    type="text"
+                    value={searchTerm}
+                    onChange={(event) => setSearchTerm(event.target.value)}
+                    placeholder="Search articles..."
+                    aria-label="Search articles"
+                  />
                 </div>
-              </article>
-            ))}
+              </div>
+
+              <div className="blog-sidebar__card glass">
+                <h3>Categories</h3>
+                <div className="blog-category-list">
+                  {BLOG_CATEGORIES.map((category) => (
+                    <button
+                      key={category.value}
+                      className={`blog-category-button ${activeCategory === category.value ? 'is-active' : ''}`}
+                      onClick={() => setActiveCategory(category.value)}
+                    >
+                      {category.label}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              <div className="blog-sidebar__card glass">
+                <h3>Popular Tags</h3>
+                <div className="blog-tag-list">
+                  {BLOG_TAGS.map((tag) => (
+                    <span key={tag} className="blog-tag">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              <div className="blog-sidebar__card blog-sidebar__card--accent">
+                <h3>Subscribe</h3>
+                <p>Get the latest tech trends delivered to your inbox weekly.</p>
+                <form
+                  className="blog-subscribe"
+                  onSubmit={(event) => {
+                    event.preventDefault()
+                  }}
+                >
+                  <input type="email" placeholder="Your email..." aria-label="Your email" />
+                  <button className="button button--primary" type="submit">
+                    Join Now
+                  </button>
+                </form>
+              </div>
+            </aside>
           </div>
         </div>
       </section>

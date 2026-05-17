@@ -2,6 +2,7 @@ import { useState } from 'react'
 import PageCta from '../components/PageCta'
 import PageIcon from '../components/PageIcon'
 import CounterCard from '../components/CounterCard'
+import { LEADERSHIP_MEMBERS } from '../data/site'
 import '../styles/pages.css'
 
 const ABOUT_FAQS = [
@@ -19,29 +20,6 @@ const ABOUT_FAQS = [
     question: 'Do you work on long-term partnerships?',
     answer:
       'Yes. We believe in building lasting relationships through consistent performance, trust, and sustainable value delivery.',
-  },
-]
-
-const teamMembers = [
-  {
-    name: 'Ammar Khan',
-    role: 'Founder & Strategy Lead',
-    image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=900&q=80',
-  },
-  {
-    name: 'Areeba Noor',
-    role: 'Creative Director',
-    image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=900&q=80',
-  },
-  {
-    name: 'Huzaifa Ali',
-    role: 'Engineering Lead',
-    image: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=900&q=80',
-  },
-  {
-    name: 'Maham Raza',
-    role: 'Client Success Lead',
-    image: 'https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?auto=format&fit=crop&w=900&q=80',
   },
 ]
 
@@ -165,7 +143,7 @@ export default function AboutPage({ onNavigate }) {
             <h2 className="section-title">A focused team with creative and technical depth</h2>
           </div>
           <div className="team-flip-grid">
-            {teamMembers.map((member) => (
+            {LEADERSHIP_MEMBERS.map((member) => (
               <article className="team-flip-card" key={member.name}>
                 <div className="team-flip-card__inner">
                   <div className="team-flip-card__front">
@@ -178,16 +156,29 @@ export default function AboutPage({ onNavigate }) {
                   <div className="team-flip-card__back">
                     <h3>{member.name}</h3>
                     <p className="team-flip-card__role">{member.role}</p>
+                    {member.profileId ? <p className="team-flip-card__id">ID: {member.profileId}</p> : null}
+                    {member.company ? <p className="team-flip-card__meta">{member.company}</p> : null}
+                    {member.location ? <p className="team-flip-card__meta">{member.location}</p> : null}
+                    {member.education ? <p className="team-flip-card__meta">{member.education}</p> : null}
                     <p className="team-flip-card__bio">
-                      Passionate about delivering premium solutions with precision and innovation. Dedicated to transforming client visions into reality.
+                      {member.bio}
                     </p>
                     <div className="team-flip-card__links">
-                      <a href="https://www.linkedin.com/" target="_blank" rel="noreferrer">
-                        <PageIcon name="linkedin" />
-                      </a>
-                      <a href="https://www.instagram.com/" target="_blank" rel="noreferrer">
-                        <PageIcon name="instagram" />
-                      </a>
+                      {member.links?.linkedin ? (
+                        <a href={member.links.linkedin} target="_blank" rel="noreferrer" aria-label={`Open ${member.name} on LinkedIn`}>
+                          <PageIcon name="linkedin" />
+                        </a>
+                      ) : null}
+                      {member.links?.github ? (
+                        <a href={member.links.github} target="_blank" rel="noreferrer" aria-label={`Open ${member.name} GitHub`}>
+                          <PageIcon name="code" />
+                        </a>
+                      ) : null}
+                      {member.links?.website ? (
+                        <a href={member.links.website} target="_blank" rel="noreferrer" aria-label={`Open ${member.name} reference`}>
+                          <PageIcon name="rocket" />
+                        </a>
+                      ) : null}
                     </div>
                   </div>
                 </div>

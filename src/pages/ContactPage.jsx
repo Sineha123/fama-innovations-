@@ -1,4 +1,5 @@
 import Contact from '../components/Contact'
+import { COMPANY_CONTACT } from '../data/site'
 import '../styles/pages.css'
 
 export default function ContactPage({ onNavigate }) {
@@ -41,7 +42,7 @@ export default function ContactPage({ onNavigate }) {
                 </div>
                 <div className="contact-hero__card-content">
                   <span>Email Us</span>
-                  <strong>info@famainnovations.com</strong>
+                  <strong>{COMPANY_CONTACT.email}</strong>
                 </div>
               </div>
               <div className="contact-hero__card contact-hero__card--phone glass-glow">
@@ -52,7 +53,7 @@ export default function ContactPage({ onNavigate }) {
                 </div>
                 <div className="contact-hero__card-content">
                   <span>Call Us</span>
-                  <strong>+1 (555) 000-0000</strong>
+                  <strong>{COMPANY_CONTACT.phone}</strong>
                 </div>
               </div>
               <div className="contact-hero__card contact-hero__card--location glass-glow">
@@ -64,7 +65,7 @@ export default function ContactPage({ onNavigate }) {
                 </div>
                 <div className="contact-hero__card-content">
                   <span>Visit Us</span>
-                  <strong>Your City, Country</strong>
+                  <strong>{COMPANY_CONTACT.location}</strong>
                 </div>
               </div>
             </div>

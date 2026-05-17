@@ -2,6 +2,8 @@ import { useState, useMemo, useEffect, useRef } from 'react'
 import gsap from 'gsap'
 import ScrollTrigger from 'gsap/ScrollTrigger'
 import PageCta from '../components/PageCta'
+import ProjectModal from '../components/ProjectModal'
+import { PORTFOLIO_PROJECTS, LEADERSHIP_MEMBERS } from '../data/site'
 import '../styles/pages.css'
 
 gsap.registerPlugin(ScrollTrigger)
@@ -16,45 +18,6 @@ const PORTFOLIO_FAQS = [
     question: 'Can portfolio items be filtered by capability?',
     answer:
       'Yes. We added filter tabs so visitors can quickly browse by technical area and see the most relevant projects first.',
-  },
-]
-
-const portfolioItems = [
-  {
-    title: 'Manufacturing Command Hub',
-    type: 'Engineering',
-    summary: 'A premium command dashboard for live production visibility, reporting, and team coordination.',
-    image: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1200&q=80',
-  },
-  {
-    title: 'Connected Device Experience',
-    type: 'Tech',
-    summary: 'A cleaner UX layer for smart hardware setup, status review, and connected product interactions.',
-    image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80',
-  },
-  {
-    title: 'Predictive Insight Console',
-    type: 'AI',
-    summary: 'A visual analytics interface that turns complex technical data into practical business insights.',
-    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80',
-  },
-  {
-    title: 'Validation Review System',
-    type: 'Engineering',
-    summary: 'A structured environment for technical approvals, simulation reviews, and quality checkpoints.',
-    image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=80',
-  },
-  {
-    title: 'Cloud Operations Layer',
-    type: 'Tech',
-    summary: 'A scalable cloud-first interface for internal coordination, monitoring, and workflow management.',
-    image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1200&q=80',
-  },
-  {
-    title: 'Automation Planning Board',
-    type: 'AI',
-    summary: 'A planning system that helps teams map automation opportunities and track execution clearly.',
-    image: 'https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1200&q=80',
   },
 ]
 
@@ -90,52 +53,66 @@ function PageFaqSection({ title, items }) {
 
 export default function PortfolioPage({ onNavigate }) {
   const [activeFilter, setActiveFilter] = useState('All')
-  const filters = ['All', 'Tech', 'AI', 'Engineering']
+  const [activeProject, setActiveProject] = useState(null)
   const portfolioRef = useRef(null)
+  const filters = ['All', 'Tech', 'AI', 'Engineering']
+  const founder = LEADERSHIP_MEMBERS[0]
 
   const filteredItems = useMemo(() => {
-    if (activeFilter === 'All') return portfolioItems
-    return portfolioItems.filter((item) => item.type === activeFilter)
+    if (activeFilter === 'All') return PORTFOLIO_PROJECTS
+    return PORTFOLIO_PROJECTS.filter((item) => item.type === activeFilter)
   }, [activeFilter])
 
   useEffect(() => {
     if (!portfolioRef.current) return
 
-    const items = portfolioRef.current.querySelectorAll('.portfolio-tile')
-    items.forEach((item, index) => {
-      gsap.fromTo(
-        item,
-        { opacity: 0, y: 60, scale: 0.95 },
-        {
-          opacity: 1,
-          y: 0,
-          scale: 1,
-          duration: 0.7,
-          delay: index * 0.1,
-          ease: 'power3.out',
-          scrollTrigger: {
-            trigger: item,
-            start: 'top 90%',
-          },
-        }
-      )
-    })
+    const ctx = gsap.context(() => {
+      const items = portfolioRef.current.querySelectorAll('.portfolio-tile')
+      items.forEach((item, index) => {
+        gsap.fromTo(
+          item,
+          { opacity: 0, y: 60, scale: 0.95 },
+          {
+            opacity: 1,
+            y: 0,
+            scale: 1,
+            duration: 0.7,
+            delay: index * 0.1,
+            ease: 'power3.out',
+            scrollTrigger: {
+              trigger: item,
+              start: 'top 90%',
+            },
+          }
+        )
+      })
+    }, portfolioRef)
+
+    return () => ctx.revert()
   }, [activeFilter])
 
   return (
     <>
+      <ProjectModal open={!!activeProject} project={activeProject} onClose={() => setActiveProject(null)} />
+
       <section className="portfolio-hero page-hero-variant">
         <div className="portfolio-hero__bg-image">
-          <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1200&q=80" alt="Portfolio" />
-          <div className="portfolio-hero__overlay"></div>
+          <img
+            src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1200&q=80"
+            alt="Portfolio"
+          />
+          <div className="portfolio-hero__overlay" />
         </div>
+
         <div className="container page-reveal">
           <div className="portfolio-hero__wrapper">
             <p className="section-kicker">Portfolio</p>
             <h1 className="portfolio-hero__title">
               Project highlights with a <span className="accent">case-study feel</span>
             </h1>
-            <p className="portfolio-hero__text">Explore our collection of projects showcasing innovation, precision, and delivered impact.</p>
+            <p className="portfolio-hero__text">
+              Explore our collection of projects showcasing innovation, precision, and delivered impact.
+            </p>
             <button className="button button--primary" onClick={() => onNavigate('/contact')}>
               Start a Project
             </button>
@@ -145,6 +122,18 @@ export default function PortfolioPage({ onNavigate }) {
 
       <section className="section page-section">
         <div className="container page-reveal" ref={portfolioRef}>
+          <div className="portfolio-leadership glass-glow">
+            <div className="portfolio-leadership__copy">
+              <p className="section-kicker">Leadership Context</p>
+              <h2 className="portfolio-leadership__title">{founder.name}</h2>
+              <p className="portfolio-leadership__role">{founder.role}</p>
+              <p className="portfolio-leadership__text">{`${founder.company} • ${founder.location} • ${founder.education}`}</p>
+            </div>
+            <a className="portfolio-leadership__link" href={founder.links.linkedin} target="_blank" rel="noreferrer">
+              View LinkedIn
+            </a>
+          </div>
+
           <div className="filter-tabs">
             {filters.map((filter) => (
               <button
@@ -159,15 +148,32 @@ export default function PortfolioPage({ onNavigate }) {
 
           <div className="portfolio-grid portfolio-grid--expanded">
             {filteredItems.map((item) => (
-              <article className="portfolio-tile glass" key={item.title}>
+              <article
+                className="portfolio-tile glass"
+                key={item.title}
+                onClick={() => setActiveProject(item)}
+                role="button"
+                tabIndex={0}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') setActiveProject(item)
+                }}
+                aria-label={`Open details for ${item.title}`}
+              >
                 <img src={item.image} alt={item.title} />
                 <div className="portfolio-tile__overlay">
-                  <span>View details</span>
+                  <span className="portfolio-tile__overlay-label">Details</span>
                 </div>
                 <div className="portfolio-tile__body">
                   <span>{item.type}</span>
                   <h3>{item.title}</h3>
                   <p>{item.summary}</p>
+                  <div className="portfolio-tile__chips">
+                    {item.techStacks.slice(0, 3).map((tech) => (
+                      <span key={tech} className="portfolio-tile__chip">
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               </article>
             ))}
